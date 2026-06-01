@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f1d1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kansai Trip">
+<title>Kansai Family Trip · June 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f0e7;
+    --paper-2:#fffdf8;
+    --ink:#211f1b;
+    --ink-soft:#5a554c;
+    --ink-faint:#938c7e;
+    --line:#e2dccf;
+    --line-strong:#d2cab8;
+    --accent:#c2512c;       /* persimmon */
+    --accent-soft:#f3e3da;
+    --osaka:#c2512c;        /* persimmon */
+    --kobe:#3f6f6e;         /* arima teal */
+    --kyoto:#6a6a31;        /* matcha */
+    --nara:#a9762a;         /* deer ochre */
+    --shadow:0 1px 2px rgba(40,33,20,.05),0 8px 24px rgba(40,33,20,.06);
+    --shadow-lg:0 2px 6px rgba(40,33,20,.08),0 20px 50px rgba(40,33,20,.12);
+    --nav-h:64px;
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom));
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(120,108,84,.05) 1px,transparent 1px);
+    background-size:4px 4px;
+  }
+  .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 18px}
+
+  /* ---------- Header ---------- */
+  header.top{
+    position:sticky;top:0;z-index:30;
+    background:rgba(244,240,231,.82);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top);
+  }
+  .top-inner{max-width:640px;margin:0 auto;padding:13px 18px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;flex-direction:column;line-height:1.1}
+  .brand .kanji{font-family:'Fraunces',serif;font-weight:600;font-size:20px;letter-spacing:-.01em}
+  .brand .sub{font-size:11px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+  .status{
+    text-align:right;font-size:11px;font-weight:700;line-height:1.25;
+    padding:6px 10px;border-radius:999px;background:var(--paper-2);
+    border:1px solid var(--line-strong);color:var(--ink-soft);white-space:nowrap;
+  }
+  .status b{color:var(--accent);display:block;font-size:13px}
+
+  /* ---------- Sections / tabs ---------- */
+  main{padding-top:18px;min-height:60vh}
+  .view{display:none;animation:fade .35s ease both}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .view-title{font-family:'Fraunces',serif;font-weight:600;font-size:27px;letter-spacing:-.02em;margin-bottom:2px}
+  .view-sub{color:var(--ink-soft);font-size:13.5px;margin-bottom:18px}
+
+  /* ---------- Day cards ---------- */
+  .day-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);
+    box-shadow:var(--shadow);margin-bottom:13px;overflow:hidden;
+    position:relative;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease;
+  }
+  .day-card:active{transform:scale(.992)}
+  .day-card.today{box-shadow:var(--shadow-lg);border-color:var(--accent)}
+  .day-card .stripe{position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
+  .day-head{display:flex;align-items:center;gap:14px;padding:15px 16px 15px 20px}
+  .daynum{
+    flex:0 0 auto;width:46px;height:46px;border-radius:12px;
+    background:var(--c-soft,var(--accent-soft));color:var(--c);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;
+  }
+  .daynum .d{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+  .daynum .n{font-family:'Fraunces',serif;font-weight:600;font-size:21px}
+  .day-meta{flex:1;min-width:0}
+  .day-meta .dt{font-size:11.5px;color:var(--ink-faint);font-weight:600;letter-spacing:.02em}
+  .day-meta .ti{font-family:'Fraunces',serif;font-size:17.5px;font-weight:500;letter-spacing:-.01em;margin:1px 0 3px}
+  .day-meta .pl{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--c)}
+  .pl .dot{width:7px;height:7px;border-radius:50%;background:var(--c)}
+  .chev{flex:0 0 auto;color:var(--ink-faint);transition:transform .25s ease}
+  .day-card.open .chev{transform:rotate(90deg)}
+  .today-flag{position:absolute;top:0;right:0;background:var(--accent);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.07em;padding:3px 9px;border-bottom-left-radius:10px;text-transform:uppercase}
+
+  .day-body{display:none;padding:0 16px 4px 20px}
+  .day-card.open .day-body{display:block;animation:fade .3s ease both}
+
+  .block{border-top:1px solid var(--line);padding:14px 0}
+  .block:first-child{border-top:none}
+  .block-h{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:9px}
+  .block-h .ic{font-size:13px}
+
+  .li{display:flex;gap:9px;font-size:14px;color:var(--ink-soft);margin-bottom:7px;line-height:1.45}
+  .li:last-child{margin-bottom:0}
+  .li .bullet{flex:0 0 auto;width:5px;height:5px;border-radius:50%;background:var(--line-strong);margin-top:8px}
+  .li b{color:var(--ink);font-weight:600}
+
+  /* schedule rows */
+  .sched{display:flex;gap:11px;margin-bottom:9px}
+  .sched:last-child{margin-bottom:0}
+  .sched .tm{flex:0 0 64px;font-size:12px;font-weight:700;color:var(--c);font-variant-numeric:tabular-nums;padding-top:1px}
+  .sched .ac{font-size:13.5px;color:var(--ink-soft);line-height:1.4;border-left:1px solid var(--line);padding-left:11px}
+  .sched .ac b{color:var(--ink);font-weight:600}
+
+  /* options */
+  .opt{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .opt:last-child{margin-bottom:0}
+  .opt.rec{border-color:var(--c);background:linear-gradient(0deg,var(--c-soft,var(--accent-soft)),var(--paper-2))}
+  .opt-h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .opt-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:var(--c);padding:2px 7px;border-radius:6px}
+  .opt-name{font-weight:600;font-size:14px;color:var(--ink)}
+  .opt-rec-badge{margin-left:auto;font-size:10px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+  .opt .li{font-size:13px;margin-bottom:5px}
+  .opt .li .bullet{background:var(--c);opacity:.5}
+
+  .callout{display:flex;gap:9px;background:var(--accent-soft);border-radius:10px;padding:10px 12px;font-size:13px;color:#7a3417;line-height:1.45;margin-top:4px}
+  .callout .ic{flex:0 0 auto}
+  .callout b{color:#612810}
+
+  /* ---------- Reference ---------- */
+  .acc{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+  .acc>summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:11px;font-weight:600;font-size:15.5px}
+  .acc>summary::-webkit-details-marker{display:none}
+  .acc>summary .ic{font-size:17px;width:24px;text-align:center}
+  .acc>summary .arr{margin-left:auto;color:var(--ink-faint);transition:transform .25s}
+  .acc[open]>summary{border-bottom:1px solid var(--line)}
+  .acc[open]>summary .arr{transform:rotate(180deg)}
+  .acc .inner{padding:14px 16px 16px}
+
+  .row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+  .row:first-child{border-top:none}
+  .row .l{font-size:13.5px}
+  .row .l b{display:block;font-weight:600;color:var(--ink);margin-bottom:1px}
+  .row .l span{color:var(--ink-faint);font-size:12px}
+  .row .r{text-align:right;font-size:13px;font-weight:600;color:var(--ink-soft);white-space:nowrap;flex:0 0 auto;font-variant-numeric:tabular-nums}
+  .row .r small{display:block;font-weight:500;color:var(--ink-faint);font-size:11px}
+
+  .stay{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+  .stay:first-child{border-top:none}
+  .stay .bar{flex:0 0 4px;border-radius:3px;background:var(--c)}
+  .stay .info{flex:1}
+  .stay .dates{font-size:11.5px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.03em}
+  .stay .nm{font-weight:600;font-size:14.5px;margin:2px 0 2px}
+  .stay .det{font-size:12.5px;color:var(--ink-soft);line-height:1.45}
+  .stay .det code{background:var(--paper);padding:1px 6px;border-radius:5px;font-size:11.5px;border:1px solid var(--line-strong);font-family:ui-monospace,monospace}
+
+  .task{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);cursor:pointer}
+  .task:first-child{border-top:none}
+  .task .box{flex:0 0 auto;width:21px;height:21px;border-radius:6px;border:2px solid var(--line-strong);margin-top:1px;display:flex;align-items:center;justify-content:center;transition:.15s;color:#fff;font-size:13px;font-weight:700}
+  .task.done .box{background:var(--accent);border-color:var(--accent)}
+  .task .tx{font-size:13.5px;color:var(--ink-soft);line-height:1.45;transition:.15s}
+  .task .tx b{color:var(--ink);font-weight:600}
+  .task.done .tx{opacity:.5;text-decoration:line-through}
+
+  .pill-list{display:flex;flex-wrap:wrap;gap:7px}
+  .pill{font-size:12.5px;background:var(--paper);border:1px solid var(--line-strong);border-radius:8px;padding:6px 10px;color:var(--ink-soft)}
+
+  /* ---------- Food ---------- */
+  .filters{position:sticky;top:calc(env(safe-area-inset-top) + 56px);z-index:20;display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;margin:0 -18px;padding-left:18px;padding-right:18px;-ms-overflow-style:none;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .fbtn{flex:0 0 auto;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line-strong);color:var(--ink-soft);cursor:pointer;transition:.15s;white-space:nowrap}
+  .fbtn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .area-h{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--c);margin:18px 0 9px;display:flex;align-items:center;gap:8px}
+  .area-h .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+  .area-h:first-child{margin-top:2px}
+  .place{background:var(--paper-2);border:1px solid var(--line);border-radius:13px;padding:12px 14px;margin-bottom:9px;box-shadow:var(--shadow)}
+  .place-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .place .nm{font-weight:600;font-size:14.5px;color:var(--ink);line-height:1.25}
+  .place .pr{font-size:12.5px;font-weight:700;color:var(--c);white-space:nowrap;flex:0 0 auto;font-variant-numeric:tabular-nums}
+  .place .ty{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);margin-top:5px}
+  .place .ds{font-size:12.5px;color:var(--ink-soft);line-height:1.45;margin-top:5px}
+  .place .mt{font-size:11.5px;color:var(--ink-faint);margin-top:6px;display:flex;flex-wrap:wrap;gap:4px 12px}
+  .place .mt span b{color:var(--ink-soft);font-weight:600}
+  .maplink{display:inline-flex;align-items:center;gap:4px;color:var(--c,var(--accent));font-weight:700;text-decoration:none}
+  .maplink:active{opacity:.6}
+  .maplink svg{width:13px;height:13px}
+  .stay .map{display:inline-flex;align-items:center;gap:4px;margin-top:7px;font-size:12px;font-weight:700;color:var(--c);text-decoration:none;background:var(--paper);border:1px solid var(--line-strong);padding:4px 9px;border-radius:8px}
+  .stay .map svg{width:13px;height:13px}
+  .empty{text-align:center;color:var(--ink-faint);font-size:13.5px;padding:40px 0}
+
+  /* ---------- Bottom nav ---------- */
+  nav.tabs{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:rgba(244,240,231,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-top:1px solid var(--line);
+    display:flex;padding-bottom:env(safe-area-inset-bottom);
+  }
+  .tab{flex:1;background:none;border:none;cursor:pointer;height:var(--nav-h);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--ink-faint);font-family:inherit;transition:color .15s;position:relative}
+  .tab svg{width:23px;height:23px}
+  .tab span{font-size:10.5px;font-weight:600;letter-spacing:.01em}
+  .tab.on{color:var(--accent)}
+  .tab.on::before{content:"";position:absolute;top:0;width:30px;height:3px;border-radius:0 0 3px 3px;background:var(--accent)}
+
+  footer{text-align:center;color:var(--ink-faint);font-size:11.5px;padding:26px 0 10px}
+  footer .kj{font-family:'Fraunces',serif;font-size:15px;color:var(--line-strong);margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <span class="kanji">関西 · Kansai Trip</span>
+      <span class="sub">Jun 2–9, 2026 · 2 adults + 2 kids</span>
+    </div>
+    <div class="status" id="status">—</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <main>
+    <!-- DAYS -->
+    <section class="view active" id="view-days">
+      <h1 class="view-title">Itinerary</h1>
+      <p class="view-sub">Tap a day to open its plan, options &amp; eats.</p>
+      <div id="days"></div>
+    </section>
+
+    <!-- REFERENCE -->
+    <section class="view" id="view-ref">
+      <h1 class="view-title">Reference</h1>
+      <p class="view-sub">Bookings, transport, addresses &amp; checklists.</p>
+      <div id="ref"></div>
+    </section>
+
+    <!-- FOOD -->
+    <section class="view" id="view-food">
+      <h1 class="view-title">Food &amp; Places</h1>
+      <p class="view-sub">40+ spots by area — eats, cafes &amp; bookshops.</p>
+      <div class="filters" id="filters"></div>
+      <div id="food"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="kj">よい旅を</div>
+    Have a great trip · built from your itinerary &amp; research
+  </footer>
+</div>
+
+<nav class="tabs">
+  <button class="tab on" data-v="days">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+    <span>Days</span>
+  </button>
+  <button class="tab" data-v="ref">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span>Reference</span>
+  </button>
+  <button class="tab" data-v="food">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v20M5 2v7a2 2 0 0 0 4 0V2M17 2v20M17 14c2 0 4-1.5 4-6 0-3.5-1-6-4-6"/></svg>
+    <span>Food</span>
+  </button>
+</nav>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const AREA = {
+  osaka:{name:'Osaka',c:'var(--osaka)',soft:'#f3e3da'},
+  kobe:{name:'Kobe · Arima',c:'var(--kobe)',soft:'#dde9e8'},
+  kyoto:{name:'Kyoto',c:'var(--kyoto)',soft:'#e7e7d4'},
+  nara:{name:'Nara',c:'var(--nara)',soft:'#efe2cb'},
+  travel:{name:'Travel day',c:'var(--ink-faint)',soft:'#ebe6da'},
+};
+
+const DAYS = [
+  {
+    n:1, date:'2026-06-02', wd:'Tuesday', area:'osaka',
+    title:'Arrival in Osaka',
+    stay:'Airbnb · Fukushima-ku',
+    blocks:[
+      {type:'logistics', items:[
+        ['','<b>8:00am</b> — Land at Kansai (KIX). Allow 60–90 min for immigration &amp; bags.'],
+        ['','Buy <b>ICOCA cards</b> + discounted <b>Haruka one-way</b> ticket (passport needed).'],
+        ['','Haruka → Osaka Station (~50 min), then 1 Loop Line stop to <b>Fukushima</b>.'],
+        ['','Airbnb check-in <b>4pm</b> — store bags in Namba/station coin lockers first.'],
+      ]},
+      {type:'options', title:'Afternoon — choose by energy', items:[
+        {tag:'Option A', name:'Low-key recovery', rec:true, points:[
+          'Drop bags, wander <b>Dotonbori</b> — Glico sign, crab, street food',
+          'Cafe rest, maybe a park nap',
+          'Snacks at <b>Don Quijote</b> (24hr)',
+          'Easy dinner near Fukushima — ramen or okonomiyaki',
+        ]},
+        {tag:'Option B', name:'Explore immediately', points:[
+          '<b>Shinsekai</b> district — retro vibes, kushikatsu',
+          'Tennoji Zoo or <b>Abeno Harukas</b> (60th-floor views)',
+          'Dinner in Dotonbori — takoyaki, gyoza, sushi',
+        ]},
+      ]},
+      {type:'eat', title:'Dinner near Fukushima-ku', items:[
+        ['','Local izakaya street — great value &amp; very local'],
+        ['','<b>551 Horai</b> butaman in the Umeda dept-store food halls'],
+        ['','Osaka Ohsho (gyoza, kid-friendly) · Ichiran (solo booths)'],
+      ]},
+      {type:'tip', items:[['','Get an <b>eSIM / pocket wifi</b> at KIX arrivals too — counters for IIJmio, Softbank, Docomo.']]},
+    ]
+  },
+  {
+    n:2, date:'2026-06-03', wd:'Wednesday', area:'osaka',
+    title:'Osaka morning + USJ from 3pm',
+    stay:'Airbnb · Fukushima-ku',
+    blocks:[
+      {type:'options', title:'Morning before USJ', items:[
+        {tag:'Option A', name:'Osaka Castle', rec:true, points:[
+          'Opens <b>9am</b> — arrive early to beat groups',
+          'Keep open 9:00–17:00 (last entry 16:30). Adult ~¥600, under-15 free',
+          'Head to USJ after lunch (~12:30pm)',
+        ]},
+        {tag:'Option B', name:'Kuromon Market', points:[
+          '150–180 stalls — go before 11am for best atmosphere',
+          'Sashimi, grilled scallops/crab, tamagoyaki, fruit',
+          'Combine with a Dotonbori walk',
+        ]},
+        {tag:'Option C', name:'USJ early', points:[
+          'If kids are keen (or slept poorly), just go when it opens',
+          'Maximise park time, skip the morning stop',
+        ]},
+      ]},
+      {type:'sched', title:'At USJ — 3pm onward', items:[
+        ['On entry','Open the <b>USJ app</b>, grab a free Super Nintendo World timed-entry ticket immediately'],
+        ['Priority','Super Nintendo World (Mario Kart) + one Harry Potter ride'],
+        ['Evening','Harry Potter area is magical at night · Minion Park for the 11yr old'],
+        ['Dinner','Eat inside the park to save travel time'],
+      ]},
+      {type:'callout', items:[['⚠️','<b>2026 is USJ\'s 25th anniversary</b> — crowds at a decade high. App timed-entry can sell out by ~10:15–10:30am. From Jan 5 2026 the app is required for tickets.']]},
+    ]
+  },
+  {
+    n:3, date:'2026-06-04', wd:'Thursday', area:'osaka',
+    title:'USJ full day',
+    stay:'Airbnb · Fukushima-ku',
+    blocks:[
+      {type:'callout', items:[['🎟️','<b>Buy Express Passes for TODAY</b>, not Jun 3. Express Pass 7 from ~¥21,800; only <b>Premium</b> guarantees both Nintendo + Donkey Kong. Each person (incl. kids) needs their own. Buy days ahead — they sell out.']]},
+      {type:'sched', title:'Suggested full day', items:[
+        ['9:00','Gates open → straight to Super Nintendo World'],
+        ['9–11','Mario Kart, Yoshi\'s Adventure, Power-Up Band activities'],
+        ['11–12:30','Donkey Kong Country (newer, quieter mid-morning)'],
+        ['12:30','Lunch — Kinopio\'s Cafe (book via app) or Circus'],
+        ['1:30','Harry Potter — Forbidden Journey, Ollivanders, Butterbeer'],
+        ['3:30','Minion Park — Despicable Me ride + meet & greet'],
+        ['5:00','Jurassic Park water ride (bring ponchos!)'],
+        ['6:30','Re-ride favourites · evening atmosphere'],
+      ]},
+      {type:'tip', items:[
+        ['','<b>Ponchos</b> for the Jurassic Park ride — it soaks you'],
+        ['','Coin lockers inside (~¥300) · portable battery (app drains phones)'],
+        ['','Mario Power-Up Band ~¥3,500 — optional but the 11yr old will love it'],
+        ['','Stay hydrated — June is warm &amp; humid'],
+      ]},
+    ]
+  },
+  {
+    n:4, date:'2026-06-05', wd:'Friday', area:'kobe',
+    title:'Kobe lunch → Arima Onsen',
+    stay:'Arima Gyoen Ryokan',
+    blocks:[
+      {type:'logistics', items:[
+        ['','Check out Osaka Airbnb by <b>11am</b> · Arima check-in <b>3pm</b>'],
+        ['','Fukushima → Kobe-Sannomiya: Hanshin direct ~35–40 min (~¥330), or JR Special Rapid ~22 min (~¥420)'],
+        ['','Sannomiya → Arima: <b>JR Bus "Arima Express"</b> ~30 min (~¥780), no transfers'],
+      ]},
+      {type:'options', title:'Kobe stop', items:[
+        {tag:'Option A', name:'Kobe beef lunch + Kitano', rec:true, points:[
+          'Store bags at Shin-Kobe / Sannomiya lockers',
+          '<b>Kitano-cho</b> — European-style Ijinkan houses (~1hr)',
+          'Kobe beef at <b>Steakland</b> (~¥3,000 set) — book ahead',
+          '2pm bus up to Arima',
+        ]},
+        {tag:'Option B', name:'Straight to Arima', points:[
+          'If kids are wiped after USJ, skip Kobe',
+          'More ryokan + bath time; grab Kobe beef snacks in the village',
+        ]},
+      ]},
+      {type:'eat', title:'At Arima Gyoen', items:[
+        ['','Kobe beef <b>kaiseki dinner + breakfast included</b> — confirm when booking'],
+        ['','Two springs: <b>Kinsen</b> (gold, iron-rich) &amp; <b>Ginsen</b> (silver, carbonated)'],
+        ['','Stroll the village after dinner — tansan senbei, Arima cider, manju'],
+      ]},
+      {type:'callout', items:[['♨️','<b>Onsen etiquette:</b> wash &amp; rinse thoroughly first · no swimwear · tie hair up · tattoos usually not allowed in public baths (use the ryokan\'s private bath). Separate baths for men &amp; women — kids 11 &amp; 14 go with a parent.']]},
+    ]
+  },
+  {
+    n:5, date:'2026-06-06', wd:'Saturday', area:'kyoto',
+    title:'Arima → Kyoto',
+    stay:'Airbnb · Bishamoncho',
+    blocks:[
+      {type:'logistics', items:[
+        ['','Check out Arima by <b>10am</b> · Kyoto check-in <b>3pm</b> (Bishamoncho, Higashiyama)'],
+        ['','Best: <b>direct highway bus Arima → Kyoto Station</b> ~70–75 min (~¥1,850). Reserve at the ryokan — limited seats.'],
+        ['','Backup: bus/train to Sannomiya → JR Special Rapid to Kyoto (~1hr, ~¥1,110)'],
+        ['','Store bags in Kyoto Station lockers (~¥500–700) if before 3pm.'],
+      ]},
+      {type:'options', title:'Afternoon in Kyoto', items:[
+        {tag:'Option A', name:'Fushimi Inari + Nishiki', rec:true, points:[
+          '<b>Nishiki Market</b> — yuba, matcha soft serve, mochi, pickles',
+          '<b>Fushimi Inari</b> — thousands of torii gates, free, 24h',
+          'Lower trail 30–45 min; full hike 2–3 hr',
+        ]},
+        {tag:'Option B', name:'Gion + Philosopher\'s Path', points:[
+          'Hanamikoji St — machiya townhouses, maybe a geisha sighting',
+          '<b>Philosopher\'s Path</b> — peaceful 2km canal walk',
+          '<b>Nanzenji</b> — huge wooden gate, free outer grounds',
+        ]},
+      ]},
+      {type:'tip', items:[['','Since you\'re based in Higashiyama, <b>Kiyomizudera + Ninenzaka/Sannenzaka</b> is also a great first-evening walk near the Airbnb.']]},
+    ]
+  },
+  {
+    n:6, date:'2026-06-07', wd:'Sunday', area:'kyoto',
+    title:'Arashiyama day',
+    stay:'Airbnb · Bishamoncho',
+    blocks:[
+      {type:'sched', title:'Route A — Nature & views', items:[
+        ['7:30','<b>Bamboo Grove</b> — arrive before 8am, almost empty (free)'],
+        ['8:30','Tenryu-ji Zen garden (opens 8:30, ~¥500)'],
+        ['9:30','Iwatayama Monkey Park — 20-min hike, ~120 macaques, panorama (adult ~¥800 / child ~¥400, cash)'],
+        ['11:00','Lunch by Togetsukyo Bridge — yudofu or soba'],
+        ['1:00','Kinkakuji — Golden Pavilion (~¥500)'],
+        ['2:30','Ryoanji rock garden (~¥600)'],
+        ['Eve','Dinner in Gion or Pontocho alley'],
+      ]},
+      {type:'sched', title:'Route B — Temples & history', items:[
+        ['9:00','Kiyomizudera — wooden stage, stunning views (~¥500)'],
+        ['10:30','Ninenzaka / Sannenzaka — cobblestone shopping lanes'],
+        ['12:00','Lunch in Higashiyama'],
+        ['2:00','Gion Shijo — Hanamikoji, browse shops'],
+        ['3:30','Nijo Castle — squeaky "nightingale floors" (~¥1,300)'],
+        ['5:30','Nishiki Market before it closes (~6pm)'],
+      ]},
+      {type:'tip', items:[
+        ['','Monkey Park is <b>cash only</b> · keep 2m distance, no eye contact, no touching'],
+        ['','Heavy all-day rain? Swap with Day 7\'s indoor book/manga day.'],
+      ]},
+    ]
+  },
+  {
+    n:7, date:'2026-06-08', wd:'Monday', area:'kyoto',
+    title:'Kyoto book day · or Nara',
+    stay:'Airbnb · Bishamoncho',
+    blocks:[
+      {type:'options', title:'Pick your day', items:[
+        {tag:'Option A', name:'Kyoto bookshops + central', rec:true, points:[
+          '<b>Keibunsha Ichijoji</b> — one of the world\'s most beautiful bookstores',
+          '<b>Kyoto Intl Manga Museum</b> — 50,000 readable volumes, kids read for hours (open Mon; ¥1,200/400/200)',
+          'Maruzen Kyoto (lemon cake) · Nishiki Market lunch',
+        ]},
+        {tag:'Option B', name:'Nara day trip', points:[
+          '<b>Nara Park</b> — 1,200+ bowing deer, crackers ~¥200',
+          '<b>Todai-ji</b> — giant bronze Buddha, world\'s largest wooden hall (~¥800)',
+          'JR Miyakoji Rapid or Kintetsu ~45 min (~¥720/760)',
+        ]},
+        {tag:'Option C', name:'Slow + shopping', points:[
+          'Sleep in · Teramachi arcade — antiques, ceramics, matcha',
+          'Kyoto Station building — observation deck, Isetan depachika',
+        ]},
+      ]},
+      {type:'callout', items:[['🧳','<b>Pack tonight</b> — check-out is 10am tomorrow. Last dinner idea: shabu-shabu (cook at the table) or Kyoto kaiseki.']]},
+    ]
+  },
+  {
+    n:8, date:'2026-06-09', wd:'Tuesday', area:'travel',
+    title:'Departure · KIX 6pm',
+    stay:'Fly home',
+    blocks:[
+      {type:'logistics', items:[
+        ['','Check out by <b>10am</b> · Flight KIX <b>6pm</b> — be at airport by ~3pm'],
+        ['','<b>Haruka Express</b> Kyoto → KIX direct, ~75 min (~¥3,060 / ~¥2,200 discount). Runs every 30 min.'],
+        ['','Aim to leave Kyoto Station by ~1:30pm.'],
+      ]},
+      {type:'options', title:'Morning buffer', items:[
+        {tag:'Option A', name:'Relaxed Kyoto morning', rec:true, points:[
+          'Slow breakfast, last omiyage at Kyoto Station (matcha Kit Kats)',
+          'Fushimi Inari at 7–8am is quiet &amp; on the way south',
+          '12:30–1:00pm Haruka → arrive KIX ~2:15pm',
+        ]},
+        {tag:'Option B', name:'Quick Osaka stop', points:[
+          'Train to Namba — 1 hr in Dotonbori for last takoyaki',
+          'Nankai Line to KIX (~45 min) — leave Namba by 2:30pm latest',
+        ]},
+      ]},
+      {type:'tip', items:[
+        ['','KIX intl terminal: Royce, Calbee, matcha everything, Uniqlo'],
+        ['','Refund ICOCA deposit at a JR office, or keep it (valid ~10 yrs)'],
+      ]},
+    ]
+  },
+];
+
+const STAYS = [
+  {area:'osaka', dates:'Jun 2 – 5', nm:'Airbnb · Fukushima-ku, Osaka', det:'Hosted by Yuki · partial addr "8-14-7". Check-in 4pm / out 11am. Nearest: JR Fukushima (Loop Line) &amp; Hanshin Fukushima. <b>Confirm exact pin in the Airbnb app.</b>', map:'JR Fukushima Station Osaka', maplabel:'JR Fukushima Station'},
+  {area:'kobe', dates:'Jun 5 – 6', nm:'Arima Gyoen Ryokan', det:'651-1401, 1296 Arimacho, Kita-ku, Kobe-shi, Hyogo. Check-in 3pm / out 10am. Reservation <code>22315095570284</code>. Kaiseki dinner + breakfast included.', map:'Arima Gyoen Ryokan Kobe', maplabel:'Arima Gyoen'},
+  {area:'kyoto', dates:'Jun 6 – 9', nm:'Airbnb · Bishamoncho, Kyoto', det:'Hosted by 幻 毘沙門 · "40 Bishamonchō". Likely Higashiyama/Gion. Check-in 3pm / out 10am. <b>Several Kyoto neighbourhoods share this name — verify the ward in the app.</b>', map:'Bishamoncho Higashiyama Kyoto', maplabel:'Bishamoncho, Higashiyama'},
+];
+
+const TRANSPORT = [
+  {l:'KIX → Osaka (Fukushima)', s:'Haruka + 1 Loop stop', t:'~55 min', f:'¥1,800*'},
+  {l:'KIX → Osaka', s:'Kansai Airport Rapid', t:'~70 min', f:'~¥1,210'},
+  {l:'Osaka → USJ', s:'JR Loop + Sakurajima (chg Nishikujo)', t:'~15–23 min', f:'~¥180'},
+  {l:'Osaka → Kobe-Sannomiya', s:'JR Special Rapid', t:'~22 min', f:'~¥420'},
+  {l:'Osaka-Umeda → Sannomiya', s:'Hanshin/Hankyu', t:'~30 min', f:'~¥330'},
+  {l:'Sannomiya → Arima Onsen', s:'JR Bus "Arima Express"', t:'~30 min', f:'~¥780'},
+  {l:'Arima → Kyoto', s:'Direct highway bus', t:'~70–75 min', f:'~¥1,850'},
+  {l:'Osaka → Kyoto', s:'JR Special Rapid', t:'~28 min', f:'~¥580'},
+  {l:'Kyoto → Nara', s:'JR Miyakoji Rapid', t:'~45 min', f:'~¥720'},
+  {l:'Kyoto → KIX', s:'Haruka Express', t:'~75 min', f:'¥2,200*'},
+];
+
+const TASKS = [
+  {k:'pre1', t:'<b>Book USJ tickets</b> — 1-Day Studio Pass for Jun 3 &amp; 4, plus Express Pass for the Jun 4 full day. Sells out in anniversary year.'},
+  {k:'pre2', t:'<b>Confirm Arima Gyoen</b> kaiseki dinner + ask about bus pickup &amp; the Arima→Kyoto bus timetable.'},
+  {k:'pre3', t:'<b>Verify both Airbnb addresses</b> in the app (Fukushima pin &amp; Bishamoncho ward).'},
+  {k:'pre4', t:'<b>Download apps</b> — USJ official app, Google Maps offline (Osaka/Kobe/Kyoto), Google Translate (camera mode).'},
+  {k:'arr1', t:'Buy <b>4 ICOCA cards</b> at KIX (child card for the 11yr old if eligible).'},
+  {k:'arr2', t:'Buy discounted <b>Haruka one-way</b> ticket (¥1,800 Osaka) — passport needed.'},
+  {k:'arr3', t:'Set up <b>eSIM / pocket wifi</b> at arrivals.'},
+  {k:'arr4', t:'Withdraw <b>cash</b> at a 7-Bank ATM (accepts foreign cards).'},
+];
+
+const PACKING = ['IC cards (buy at KIX)','eSIM / pocket wifi','Power banks','Light rain jacket','Compact umbrellas','Comfortable walking shoes','Ponchos for USJ','Small daypack each','Cash (JPY)','Handheld fan','Quick-dry footwear','Bag for wet items'];
+
+const PLACES = [
+  // OSAKA
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'eat', nm:'Fukushima izakaya alley', pr:'', ty:'Izakaya', ds:'Lively casual strip (Fukumaru Dori 57), 3-min walk from JR Fukushima. Great low-key first night.'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'eat', nm:'Sobakiri Karani', pr:'¥1,500–2,500', ty:'Soba', ds:'Handmade soba, mackerel/duck toppings. Quiet, quality.'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'eat', nm:'POGO', pr:'from ¥280', ty:'Craft beer izakaya', ds:'Friendly small plates, pizza/pasta. Relaxed for families early evening.'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'eat', nm:'Hanakujira', pr:'cheap', ty:'Oden', ds:'Comforting oden specialist.'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'eat', nm:'551 Horai', pr:'grab & go', ty:'Pork buns', ds:'Osaka institution butaman in Umeda dept-store food halls. Perfect for tired kids.'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'book', nm:'MARUZEN & Junkudo Umeda', pr:'', ty:'Bookshop', ds:'One of Japan\'s largest — 7 floors, big English selection.', hrs:'10:00–22:00', loc:'7-20 Chayamachi'},
+  {area:'osaka', sub:'Fukushima & Umeda', cat:'book', nm:'Umeda Tsutaya Books', pr:'', ty:'Bookshop', ds:'Stylish, 500+ seats, children\'s corner on 7F.', hrs:'10:30–21:00', loc:'9F Lucua 1100'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'eat', nm:'Takoyaki — Wanaka / Ootako / Kukuru', pr:'¥600–1,000', ty:'Takoyaki', ds:'Classic Dotonbori octopus balls. Ootako is the oldest (since 1972).'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'eat', nm:'Chibo / Mizuno', pr:'¥900–1,800', ty:'Okonomiyaki', ds:'Mizuno is a 75-year favourite. Savoury Osaka pancakes.'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'eat', nm:'Kushikatsu Daruma', pr:'¥100–200/skewer', ty:'Kushikatsu', ds:'Deep-fried skewers — no double-dipping the communal sauce!'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'eat', nm:'Kani Doraku', pr:'splurge', ty:'Crab', ds:'The giant moving crab sign — optional pricier crab feast.'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'cafe', nm:'Rikuro Ojisan', pr:'~¥965', ty:'Cheesecake', ds:'Famous jiggly cheesecake (whole). A hit with kids.'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'book', nm:'Animate Nipponbashi', pr:'', ty:'Anime / Manga', ds:'Largest anime/manga store in western Japan (Den Den Town). Teen favourite.'},
+  {area:'osaka', sub:'Dotonbori & Namba', cat:'book', nm:'Standard Bookstore', pr:'', ty:'Bookshop', ds:'Curated indie vibe, design/art, cafe feel (Shinsaibashi & Abeno).'},
+  // KOBE / ARIMA
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Steakland Kobe', pr:'~¥3,000', ty:'Kobe beef teppanyaki', ds:'Popular affordable Kobe beef lunch sets — expect a line.'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Kobe Steak Propeller', pr:'~¥3,500', ty:'Kobe beef', ds:'Casual & cozy, 5-min from Sannomiya. Kobe Steak S lunch + set.'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Hiroshige', pr:'~¥1,500', ty:'Kobe beef gyudon', ds:'Cheapest way to taste Kobe beef — tiny (~10 seats), often a wait.'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Nagata Tank Suji', pr:'¥800–1,500', ty:'Sobameshi', ds:'Kobe soul food + beef-tendon "bokkake". Retro, fun, cheap (Sun Plaza B1F).'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Nankinmachi street food', pr:'¥200–800', ty:'Chinatown', ds:'Roushouki pork buns, fried soup dumplings, panda buns, beef croquettes.'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'cafe', nm:'Freundlieb', pr:'¥1,200–2,200', ty:'Bakery cafe', ds:'Historic German bakery in a 1929 former church. Sandwiches, shortcake.', hrs:'closed Wed', loc:'Kitano'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'cafe', nm:'Nishimura Coffee', pr:'', ty:'Kissaten', ds:'Classic Kobe coffee house since 1948.'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'book', nm:'Junkudo Sannomiya', pr:'', ty:'Bookshop', ds:'Large multi-floor flagship by Sannomiya Station, some English.'},
+  {area:'kobe', sub:'Arima Onsen', cat:'cafe', nm:'Kin no Yu (Gold)', pr:'¥650–800', ty:'Public bath', ds:'Iron-rich reddish-brown spring. Free footbath outside.', hrs:'9–21, closed 2nd & 4th Tue'},
+  {area:'kobe', sub:'Arima Onsen', cat:'cafe', nm:'Gin no Yu (Silver)', pr:'¥550–700', ty:'Public bath', ds:'Clear carbonated/radium spring.', hrs:'9–21, closed 1st & 3rd Tue'},
+  {area:'kobe', sub:'Arima Onsen', cat:'eat', nm:'Arima Tansanriki', pr:'', ty:'Snack shop', ds:'Novelty ciders (gyoza, curry-bread!) + tansan senbei. Fun with kids — by Kin no Yu footbath.'},
+  // KYOTO — Gion/Higashiyama
+  {area:'kyoto', sub:'Gion & Higashiyama', cat:'eat', nm:'Gion Tanto', pr:'¥1,500–3,000', ty:'Okonomiyaki', ds:'Cooked at your table. English menu, vegan options. Fun for kids (Miyagawasuji).'},
+  {area:'kyoto', sub:'Gion & Higashiyama', cat:'eat', nm:'Mimikou', pr:'¥1,000–1,500', ty:'Curry udon', ds:'Kyoto curry udon — small & popular.'},
+  {area:'kyoto', sub:'Gion & Higashiyama', cat:'cafe', nm:'Maeda Coffee', pr:'', ty:'Kissaten', ds:'House-roasted coffee, matcha mousse, parfaits near Yasaka Pagoda. Rarely too busy.'},
+  {area:'kyoto', sub:'Gion & Higashiyama', cat:'cafe', nm:'Gion Tsujiri', pr:'', ty:'Matcha parfait', ds:'Famous Uji-matcha parfaits — expect a line.'},
+  {area:'kyoto', sub:'Gion & Higashiyama', cat:'cafe', nm:'% Arabica Higashiyama', pr:'', ty:'Coffee', ds:'Minimalist specialty coffee, scenic but busy.'},
+  // KYOTO — Arashiyama
+  {area:'kyoto', sub:'Arashiyama', cat:'eat', nm:'Yudofu houses', pr:'¥2,000–3,000', ty:'Tofu cuisine', ds:'Simmered tofu — the Arashiyama specialty, near Tenryuji.'},
+  {area:'kyoto', sub:'Arashiyama', cat:'cafe', nm:'% Arabica Arashiyama', pr:'', ty:'Coffee', ds:'Excellent coffee, spectacular riverside view by Togetsukyo. Often a line.'},
+  {area:'kyoto', sub:'Arashiyama', cat:'cafe', nm:'Okochi Sanso tea house', pr:'~¥1,000', ty:'Matcha', ds:'Matcha + sweet in a beautiful villa garden.'},
+  // KYOTO — Central
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'eat', nm:'Gyoza Chao Chao', pr:'¥600–1,700', ty:'Gyoza', ds:'Bite-size gyoza, value sets, vegan yuba option. Lively — expect a 30–60 min queue.'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'eat', nm:'Gyukatsu Katsugyu', pr:'¥1,500–2,500', ty:'Beef cutlet', ds:'Grill-your-own breaded beef cutlet (Pontocho).'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'eat', nm:'Nishiki Market grazing', pr:'¥200–1,200', ty:'Market', ds:'Tako tamago, dashimaki, soy doughnuts, yuba croquettes, strawberry daifuku. Eat at the stall.'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'cafe', nm:'Smart Coffee', pr:'', ty:'Kissaten', ds:'Since 1932 — hand-roasted coffee, fluffy hotcakes, French toast (Teramachi).'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'cafe', nm:'Inoda Coffee Honten', pr:'', ty:'Kissaten', ds:'Since 1940 — nostalgic European-style, breakfast sets & parfaits.'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'book', nm:'Keibunsha Ichijoji', pr:'', ty:'Bookshop', ds:'One of the world\'s 10 most beautiful bookstores (The Guardian). Gallery, stationery, cafe.', hrs:'10:00–21:00', loc:'Ichijoji (Eizan line)'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'book', nm:'Maruzen Kyoto', pr:'', ty:'Bookshop', ds:'Big foreign-language section + Maruzen Cafe lemon cake (the novel "Lemon" setting).', loc:'B1–B2 Kyoto BAL'},
+  {area:'kyoto', sub:'Central — Pontocho/Nishiki', cat:'book', nm:'Kyoto Intl Manga Museum', pr:'¥1,200 / ¥400 / ¥200', ty:'Manga museum', ds:'~50,000 readable volumes on a 200m "Wall of Manga". Kids read for hours.', hrs:'10:30–17:30, closed Wed'},
+  {area:'kyoto', sub:'Kyoto Station', cat:'eat', nm:'Kyoto Ramen Koji', pr:'¥700–1,500', ty:'Ramen', ds:'8 regional ramen shops on the 10F — everyone picks a region.'},
+  {area:'kyoto', sub:'Kyoto Station', cat:'eat', nm:'Katsukura', pr:'¥1,800–2,500', ty:'Tonkatsu', ds:'Free cabbage/rice/miso refills — great for hungry teens (The Cube 11F / Porta).'},
+  // NARA
+  {area:'nara', sub:'Nara', cat:'eat', nm:'Hiraso', pr:'¥1,500–2,500', ty:'Kakinoha-zushi', ds:'Persimmon-leaf sushi sets; takeaway boxes for a park picnic (3-min from Kintetsu Nara).'},
+  {area:'nara', sub:'Nara', cat:'eat', nm:'Tengyokudo', pr:'¥900–1,600', ty:'Kuzu udon', ds:'Arrowroot udon + kuzumochi desserts near Todai-ji.'},
+  {area:'nara', sub:'Nara', cat:'cafe', nm:'Nakatanidou', pr:'¥150–200', ty:'Mochi', ds:'Famous high-speed mochi-pounding show (~every 30 min). Cash only — kids love it.', hrs:'winds down ~3pm'},
+  {area:'nara', sub:'Nara', cat:'cafe', nm:'Mahoroba Daibutsu Pudding', pr:'from ¥350', ty:'Pudding', ds:'Custard puddings in cute deer/Buddha jars.'},
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const setVar = (el,a) => { el.style.setProperty('--c', AREA[a].c); el.style.setProperty('--c-soft', AREA[a].soft); };
+
+// ---- google maps ----
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+function mapURL(q){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q); }
+function placeQuery(p){
+  let city={osaka:'Osaka',kobe:'Kobe',kyoto:'Kyoto',nara:'Nara'}[p.area];
+  if(p.sub && p.sub.indexOf('Arima')>=0) city='Arima Onsen';
+  return (p.loc ? p.nm+' '+p.loc : p.nm)+' '+city+' Japan';
+}
+
+// ---- status / today ----
+const TRIP = DAYS.map(d=>d.date);
+function todayKey(){
+  const n = new Date();
+  return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');
+}
+function dayDiff(a,b){ return Math.round((new Date(b)-new Date(a))/86400000); }
+function renderStatus(){
+  const tk = todayKey();
+  const idx = TRIP.indexOf(tk);
+  const st = $('#status');
+  if(idx>=0){ st.innerHTML = '<b>Day '+(idx+1)+'</b>today'; return idx; }
+  const toStart = dayDiff(tk, TRIP[0]);
+  if(toStart>0){ st.innerHTML = '<b>'+toStart+'</b>day'+(toStart>1?'s':'')+' to go'; }
+  else if(dayDiff(tk,TRIP[TRIP.length-1])>=0){ st.innerHTML='<b>•</b>in transit'; }
+  else { st.innerHTML = 'おかえり<br>welcome home'; }
+  return -1;
+}
+
+// ---- days ----
+function liHTML(items){
+  return items.map(([_,html])=>`<div class="li"><span class="bullet"></span><span>${html}</span></div>`).join('');
+}
+function blockHTML(b){
+  const heads={logistics:['📍','Logistics'],eat:['🍜','Eat'],tip:['💡','Tips'],sched:['🕘',b.title||'Schedule'],options:['🔀',b.title||'Options'],callout:['','']};
+  if(b.type==='callout'){
+    return b.items.map(([ic,html])=>`<div class="callout"><span class="ic">${ic}</span><span>${html}</span></div>`).join('');
+  }
+  let inner='';
+  if(b.type==='sched'){
+    inner = b.items.map(([tm,ac])=>`<div class="sched"><div class="tm">${tm}</div><div class="ac">${ac}</div></div>`).join('');
+  } else if(b.type==='options'){
+    inner = b.items.map(o=>`
+      <div class="opt${o.rec?' rec':''}">
+        <div class="opt-h"><span class="opt-tag">${o.tag}</span><span class="opt-name">${o.name}</span>${o.rec?'<span class="opt-rec-badge">★ pick</span>':''}</div>
+        ${o.points.map(p=>`<div class="li"><span class="bullet"></span><span>${p}</span></div>`).join('')}
+      </div>`).join('');
+  } else {
+    inner = liHTML(b.items);
+  }
+  const [ic,label]=heads[b.type]||['',''];
+  const h = label?`<div class="block-h"><span class="ic">${ic}</span>${label}</div>`:'';
+  return `<div class="block">${h}${inner}</div>`;
+}
+function renderDays(todayIdx){
+  const wrap=$('#days');
+  wrap.innerHTML = DAYS.map((d,i)=>{
+    const a=AREA[d.area];
+    return `
+    <article class="day-card${i===todayIdx?' today':''}" data-i="${i}" style="--c:${a.c};--c-soft:${a.soft}">
+      <div class="stripe"></div>
+      ${i===todayIdx?'<span class="today-flag">Today</span>':''}
+      <div class="day-head">
+        <div class="daynum"><span class="d">Day</span><span class="n">${d.n}</span></div>
+        <div class="day-meta">
+          <div class="dt">${d.wd}, ${new Date(d.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+          <div class="ti">${d.title}</div>
+          <span class="pl"><span class="dot"></span>${d.stay}</span>
+        </div>
+        <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+      </div>
+      <div class="day-body">${d.blocks.map(blockHTML).join('')}</div>
+    </article>`;
+  }).join('');
+  wrap.querySelectorAll('.day-card').forEach(card=>{
+    card.querySelector('.day-head').addEventListener('click',()=>card.classList.toggle('open'));
+  });
+  // auto-open today
+  if(todayIdx>=0) wrap.querySelectorAll('.day-card')[todayIdx].classList.add('open');
+}
+
+// ---- reference ----
+function renderRef(){
+  const accordion=(ic,title,body,open)=>`
+    <details class="acc"${open?' open':''}>
+      <summary><span class="ic">${ic}</span>${title}<span class="arr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+      <div class="inner">${body}</div>
+    </details>`;
+
+  const stays = STAYS.map(s=>{
+    const a=AREA[s.area];
+    return `<div class="stay"><div class="bar" style="background:${a.c}"></div><div class="info">
+      <div class="dates" style="color:${a.c}">${s.dates}</div>
+      <div class="nm">${s.nm}</div><div class="det">${s.det}</div>
+      <a class="map" style="--c:${a.c}" href="${mapURL(s.map)}" target="_blank" rel="noopener">${PIN}${s.maplabel}</a>
+      </div></div>`;
+  }).join('');
+
+  const flights = `<div class="row"><div class="l"><b>Arrive · KIX</b><span>Tue Jun 2</span></div><div class="r">8:00am</div></div>
+    <div class="row"><div class="l"><b>Depart · KIX</b><span>Tue Jun 9</span></div><div class="r">6:00pm</div></div>`;
+
+  const transport = TRANSPORT.map(r=>`<div class="row"><div class="l"><b>${r.l}</b><span>${r.s}</span></div><div class="r">${r.f}<small>${r.t}</small></div></div>`).join('')
+    + `<div class="callout" style="margin-top:12px"><span class="ic">*</span><span>Fares marked * are the discounted foreigner <b>Haruka one-way</b> price (passport required). Regular Haruka to Kyoto is ¥3,060.</span></div>`;
+
+  const tasksPre = TASKS.filter(t=>t.k.startsWith('pre')).map(t=>taskHTML(t)).join('');
+  const tasksArr = TASKS.filter(t=>t.k.startsWith('arr')).map(t=>taskHTML(t)).join('');
+
+  const ic = '💴 IC cards: ~¥2,000 (¥1,500 credit + ¥500 deposit). Work on trains, buses, konbini, lockers, vending machines across Kansai.';
+  const money = `<div class="li"><span class="bullet"></span><span><b>Cash still matters</b> — small shops, markets (Nishiki, Kuromon), temples &amp; Nakatanidou are often cash-only.</span></div>
+    <div class="li"><span class="bullet"></span><span><b>7-Bank ATMs</b> (in 7-Eleven) reliably accept foreign cards.</span></div>
+    <div class="li"><span class="bullet"></span><span>IC cards &amp; credit cards work in chains, dept stores &amp; USJ.</span></div>
+    <div class="li"><span class="bullet"></span><span>June = <b>tsuyu</b> (rainy season), ~19–28°C, humid. Keep indoor backups: bookshops, depachika, markets, museums.</span></div>`;
+
+  const packing = `<div class="pill-list">${PACKING.map(p=>`<span class="pill">${p}</span>`).join('')}</div>`;
+
+  $('#ref').innerHTML =
+    accordion('🏠','Where you\'re staying', stays, true) +
+    accordion('✈️','Flights', flights, false) +
+    accordion('✅','Before you go', tasksPre, false) +
+    accordion('🛬','On arrival at KIX', tasksArr, false) +
+    accordion('🚃','Getting around', transport, false) +
+    accordion('💴','Money &amp; weather', `<div class="li"><span class="bullet"></span><span>${ic}</span></div>`+money, false) +
+    accordion('🧳','Packing essentials', packing, false);
+
+  // task interactions
+  $('#ref').querySelectorAll('.task').forEach(el=>{
+    const k=el.dataset.k;
+    if(localStorage.getItem('task_'+k)==='1') el.classList.add('done');
+    el.addEventListener('click',e=>{
+      e.preventDefault();
+      el.classList.toggle('done');
+      localStorage.setItem('task_'+k, el.classList.contains('done')?'1':'0');
+    });
+  });
+}
+function taskHTML(t){
+  return `<div class="task" data-k="${t.k}"><div class="box">✓</div><div class="tx">${t.t}</div></div>`;
+}
+
+// ---- food ----
+const CATS=[['all','All'],['eat','Eat'],['cafe','Cafe'],['book','Books'],];
+let foodFilter='all';
+function renderFilters(){
+  $('#filters').innerHTML = CATS.map(([k,l])=>`<button class="fbtn${k===foodFilter?' on':''}" data-c="${k}">${l}</button>`).join('');
+  $('#filters').querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{
+    foodFilter=b.dataset.c; renderFilters(); renderFood();
+  }));
+}
+function renderFood(){
+  const list = PLACES.filter(p=>foodFilter==='all'||p.cat===foodFilter);
+  if(!list.length){ $('#food').innerHTML='<div class="empty">No spots in this filter.</div>'; return; }
+  // group by area then sub
+  const order=['osaka','kobe','kyoto','nara'];
+  let html='';
+  order.forEach(ar=>{
+    const inAr=list.filter(p=>p.area===ar);
+    if(!inAr.length) return;
+    const a=AREA[ar];
+    const subs=[...new Set(inAr.map(p=>p.sub))];
+    html+=`<div class="area-h" style="color:${a.c}"><span class="dot" style="background:${a.c}"></span>${a.name}</div>`;
+    subs.forEach(sub=>{
+      html+=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);margin:10px 0 7px">${sub}</div>`;
+      inAr.filter(p=>p.sub===sub).forEach(p=>{
+        const meta=[
+          p.hrs?`<span>🕘 <b>${p.hrs}</b></span>`:'',
+          p.loc?`<span>📍 <b>${p.loc}</b></span>`:'',
+          `<a class="maplink" style="--c:${a.c}" href="${mapURL(placeQuery(p))}" target="_blank" rel="noopener">${PIN}Maps</a>`
+        ].filter(Boolean).join('');
+        html+=`<div class="place" style="--c:${a.c}">
+          <div class="place-top"><div class="nm">${p.nm}</div>${p.pr?`<div class="pr">${p.pr}</div>`:''}</div>
+          <span class="ty">${p.ty}</span>
+          <div class="ds">${p.ds}</div>
+          <div class="mt">${meta}</div>
+        </div>`;
+      });
+    });
+  });
+  $('#food').innerHTML=html;
+}
+
+// ---- tabs ----
+function initTabs(){
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    const v=t.dataset.v;
+    document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+    document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+    $('#view-'+v).classList.add('active');
+    window.scrollTo({top:0,behavior:'instant'});
+  }));
+}
+
+// ---- boot ----
+const todayIdx = renderStatus();
+renderDays(todayIdx);
+renderRef();
+renderFilters();
+renderFood();
+initTabs();
+</script>
+</body>
+</html>
