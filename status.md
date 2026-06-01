@@ -4,9 +4,10 @@
 
 ## Where we are
 
-- **Last completed:** Phase 7 — Day 7 (Mon Jun 8, Kyoto book day / Nara) ✅. **All day phases 1–8 are now complete.**
-- **Next up:** **Phase 9 — Cross-cutting QA & wrap-up** (Reference-tab audit, consistency pass, full app test, single clean commit when owner asks).
-- **Mode:** Phases 1–5 done sequentially; 6–8 parallelized across sessions per owner. Owner wants **each day expanded with a lot more detail.**
+- **Last completed:** Phase 9 — Cross-cutting QA & wrap-up ✅. **ALL PHASES (0–9) COMPLETE.**
+- **Next up:** **Owner review + final commit.** Awaiting owner sign-off to make a single clean commit on `main` (per CLAUDE.md, commit only when owner asks). No browser here — owner should eyeball `index.html` once (weather strips, Day-route buttons, tabs, task checkboxes persist).
+- **Phase 9 outcome:** consistency sweep clean; Reference-tab fact audit fixed 5 items — **FX rate ~¥115→~¥125 = S$1** (whole table rebuilt), **AMDA number 050-3598-7574→03-6233-9266** (was wrong), **TRANSPORT Arima→Kyoto ¥1,850→¥2,000**, Haruka footnote ¥3,060→~¥2,900–3,100, and removed the false "no Osaka consulate" claim. Plus 37 bare ` & `→` &amp; `. Details + sources in `implementation.md` → Phase 9.
+- **Mode:** Phases 1–5 done sequentially; 6–8 parallelized across sessions per owner. Owner wanted **each day expanded with a lot more detail** (done).
 
 ## Progress
 
@@ -21,7 +22,7 @@
 | 6 | Arashiyama day | Sun Jun 7 | ✅ done |
 | 7 | Kyoto book day or Nara | Mon Jun 8 | ✅ done |
 | 8 | Departure · KIX 6pm | Tue Jun 9 | ✅ done |
-| 9 | Cross-cutting QA & wrap-up | — | ⬜ |
+| 9 | Cross-cutting QA & wrap-up | — | ✅ done |
 
 ## How to run the next phase (recipe)
 

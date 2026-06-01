@@ -36,7 +36,7 @@ Runs as **sequential per-day phases** — one day reviewed, verified, integrated
 - [x] **Phase 6 — Day 6** · Sun Jun 7 · Arashiyama day
 - [x] **Phase 7 — Day 7** · Mon Jun 8 · Kyoto book day or Nara
 - [x] **Phase 8 — Day 8** · Tue Jun 9 · Departure · KIX 6pm
-- [ ] **Phase 9 — Cross-cutting QA & wrap-up**
+- [x] **Phase 9 — Cross-cutting QA & wrap-up**
 
 ---
 
@@ -138,6 +138,11 @@ Guardrails: never overwrite a concrete confirmed detail with a vaguer one; prese
 **Verify-on-arrival (left hedged):** Sobakiri Karani weekday rest day; exact Ichiran/551 branch hours for a Tuesday; child-ICOCA office queue on the busy reopening day; rainy-season exact onset (forecast ~Jun 6–7).
 
 **Verification:** embedded JS passes `node --check`; route auto-builds from explicit `route[]`.
+
+**Owner update (Jun 1 2026) — Day 1 lunch + early check-in:** Owner will request early check-in *after* lunch, and asked for a lunch pick between the arrival station (JR Fukushima) and the Airbnb (8-14-7, 8-chome). Reworked the arrival flow to **lunch on the walk in → then ask for early check-in** (both afternoon-option scheds updated; ~12:30 "lunch + locker" rows replaced with a ~13:00 early-check-in row). Added a new **"Lunch on the walk in — Fukushima ramen district"** `eat` block — the 7-chome ramen cluster genuinely sits between the station and the 8-chome Airbnb.
+- Lunch pick: **Ramen Jinsei JET** (人生JET, 7-12-2 Fukushima) — chicken-paitan, lunch 11:00–15:00, no fixed closing day (hedged "confirm same-day"), counter-only. — https://www.nippon.com/en/japan-topics/c13822/ ; https://log.deep-exp.com/en/media/82
+- Backup: **Mitsuboshi Seimenjo** (みつ星製麺所, 7-17-21 Fukushima) tsukemen/chicken-shio, also counter-only; plus Hankyu Oasis 2F eat-in / konbini as the table-seat luggage-friendly fallback. — https://foodle.pro/restaurants/osaka/mitsuboshiseimenjo-fukushima-honten
+- **Removed: Fukushima Ichimen** — it shut as a ramen shop (~Jun 30) so it was never added; confirmed closed during this check. — https://tabelog.com/en/osaka/A2701/A270108/27079245/
 
 **Render-layer additions (post Phase 1, now standing requirements):**
 - `options` blocks support an optional **`sched`** ("Suggested timing" mini-schedule) per option; option `points` may be `['<html>','map query']` for a Map link.
@@ -326,8 +331,26 @@ The flexible "book day / Nara / ninja" day. **Highest-value check = Monday weekl
 
 **Verification:** embedded JS passes `node --check`; route auto-builds from explicit `route[]`.
 
-### Phase 9 — QA
-_pending_
+### Phase 9 — Cross-cutting QA & wrap-up — ✅ complete
+
+Two-part pass: (1) a **consistency sweep** of `index.html` (mechanical/structural), and (2) a **Reference-tab fact re-audit** via a research subagent + adversarial re-verification of the safety-critical and high-impact numbers before writing them.
+
+**Consistency sweep (all clean / fixed):**
+- **Structure:** 8 days · 8 weather strips · 8 `maps[]` · 8 `route[]` — all present. `STAYS[]` dates ↔ day-card `stay:` align (Osaka Jun 2–5 → Days 1–3; Arima Jun 5–6 → Day 4; Kyoto Jun 6–9 → Days 5–7; fly home Day 8). All 8 weekdays re-checked against the 2026 calendar (`node` Zeller check) — correct. No `14yo`/`14yr` headcount leftovers. Embedded JS passes `node --check`.
+- **HTML entities:** 37 bare ` & ` in copy + `heads`/`sub` data → ` &amp; ` (renders identically; `sub` grouping keys stay string-equal so the Food-tab grouping is unaffected). 0 bare ` & ` remain; 126 `&amp;` total.
+
+**Corrections from the Reference-tab fact audit (each re-verified before writing):**
+- **Currency — stale, highest impact.** `FX[]` assumed **~¥115 = S$1**; the actual early-Jun-2026 rate is **¥1 ≈ S$0.0080 → ~¥125 = S$1** (yen ~8% weaker than the app assumed). Rebuilt the whole table (¥100→S$0.80, ¥500→S$4.00, ¥1,000→S$8.00, ¥3,000→S$24, ¥5,000→S$40, ¥10,000→S$80), the header line (~¥115→~¥125), the comment, and the mental-math rule (`¥1,000 ≈ S$9 ÷115` → `¥1,000 ≈ S$8 ÷125, take off ~a fifth`). *Independently confirmed via xe + a second WebSearch (¥1 = S$0.0080).* — xe.com, exchange-rates.org/exchange-rate-history/jpy-sgd-2026
+- **AMDA emergency number — WRONG.** Old `050-3598-7574` appears in no AMDA source. Replaced with the official **AMDA International Medical Information Center 03-6233-9266**, and added its real hours **Mon–Fri 10:00–16:00** (it is a weekday-daytime clinic-finder/interpreting line, *not* 24h — the JNTO `050-3816-2787` line remains the 24h English option). *Re-verified directly (safety-critical) via a second WebSearch.* — amdamedicalcenter.com/welcome/english
+- **`TRANSPORT[]` Arima → Kyoto — internal contradiction.** Reference table said `~¥1,850` while the Day-5 e-ticket card said `¥2,000`. Fixed table → **`~¥2,000`** and relabeled the service "Keihan highway bus (reservation-priority)." — japanbusonline.com Keihan Kyoto–Arima Onsen Liner
+- **Haruka footnote consistency.** Flat `¥3,060` → **`~¥2,900–3,100`** to match the Day-8 card (audit confirmed ¥3,060 unreserved is the official figure, so the range is correct and now consistent across tabs).
+- **Singapore Embassy sub-line — inaccurate claim removed.** "(no Osaka consulate)" was wrong (a Honorary Consulate-General exists in Osaka, +81 72-223-6911, limited service). Reworded to "Main consular &amp; 24h emergency line for Japan (incl. Kansai)" — keeps the Tokyo embassy as the correct primary contact without the false claim.
+
+**Audit items confirmed CORRECT (no change needed):** Haruka KIX↔Osaka ¥1,800/¥900 discount; Osaka→USJ ¥180; Osaka→Sannomiya JR ¥420 & Hanshin/Hankyu ¥330; Sannomiya→Arima ¥600/¥780; Osaka→Kyoto ¥580; Kyoto→Nara ¥720; Kyoto→KIX Haruka ¥2,200/¥1,100; ambulance 119 / police 110; JNTO 050-3816-2787; SG Embassy +81 3-3586-9111; all 3 EHOSP hospitals (NHO Osaka 2-1-14 Hoenzaka is a designated emergency hospital; Kobe Univ.; Japan Baptist); ICOCA ¥2,000 / child-card mechanics; tsuyu framing (Kinki onset ~Jun 6 2026, ~19–28°C, humid).
+
+**Verify-on-arrival (left unchanged, low-confidence/minor):** KIX→Fukushima Rapid fare — audit suggested ¥1,180 vs the app's `~¥1,210`; kept the long-standing published `~¥1,210` (tilde already hedges the ¥30 gap) rather than swap in a single-source figure. FX rate is live — the app tells the user to check before flying.
+
+**Verification:** embedded JS passes `node --check`; grep confirms 0 occurrences of every stale value (¥1,850, ¥115, S$0.87/S$87, 3598-7574, "no Osaka consulate", bare ` & `) and presence of all new values.
 
 ---
 
@@ -428,3 +451,12 @@ _pending_
 - ICOCA refund mechanics (¥500 deposit full, ¥220 fee off balance, capped) — https://faq-support.westjr.co.jp/hc/en-us/articles/8880706840847 ; https://www.japan-guide.com/e/e2359_003.html
 - Fushimi Inari 24h / free / Tuesday open — https://fushimi-inari.com/hours/ ; https://fushimi-inari.com/entrance-fee/
 - Kansai tsuyu 2026 onset (~Jun 6) / June conditions — https://selfguidejapan.com/blog/japan-rainy-season-2026 ; https://www.jrailpass.com/blog/rainy-season
+
+**Phase 9 (Reference-tab audit):**
+- JPY↔SGD rate (¥1 ≈ S$0.0080 → ~¥125 = S$1, early Jun 2026) — https://www.xe.com/currencyconverter/convert/?Amount=1&From=JPY&To=SGD ; https://www.exchange-rates.org/exchange-rate-history/jpy-sgd-2026
+- AMDA International Medical Information Center (03-6233-9266, Mon–Fri 10:00–16:00, multilingual incl. English) — https://www.amdamedicalcenter.com/welcome/english
+- JNTO Japan Visitor Hotline (050-3816-2787, 24h English) — https://www.japan.travel/en/plan/hotline/
+- Singapore Embassy Tokyo (+81 3-3586-9111) + Osaka Honorary Consulate-General — https://www.mfa.gov.sg/tokyo ; https://www.mfa.gov.sg/osaka
+- Arima → Kyoto Keihan "Kyoto–Arima Onsen Liner" ¥2,000 one-way — https://japanbusonline.com/en/CourseSearch/12800290001
+- Haruka discount one-way (¥1,800 Osaka / ¥2,200 Kyoto adult, ¥900/¥1,100 child) + regular ¥3,060 — https://www.westjr.co.jp/travel-information/en/tickets-passes/oneway/haruka/
+- EHOSP sanity-check (NHO Osaka designated emergency hospital; Kobe Univ.; Japan Baptist) — https://www.hosp.kobe-u.ac.jp/e/ ; https://www.telljp.com/wikitell/japan-baptist-hospital/
