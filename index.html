@@ -107,6 +107,12 @@
   .day-body{display:none;padding:0 16px 4px 20px}
   .day-card.open .day-body{display:block;animation:fade .3s ease both}
 
+  .navmaps{display:flex;flex-wrap:wrap;gap:6px;padding:13px 0 2px;border-top:1px solid var(--line)}
+  .navmaps .nh{flex-basis:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:3px}
+  .navchip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--c);background:var(--c-soft,var(--accent-soft));border:1px solid transparent;padding:5px 9px;border-radius:999px;text-decoration:none}
+  .navchip:active{opacity:.6}
+  .navchip svg{width:11px;height:11px}
+
   .block{border-top:1px solid var(--line);padding:14px 0}
   .block:first-child{border-top:none}
   .block-h{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-faint);margin-bottom:9px}
@@ -292,85 +298,127 @@ const DAYS = [
     n:1, date:'2026-06-02', wd:'Tuesday', area:'osaka',
     title:'Arrival in Osaka',
     stay:'Airbnb · Fukushima-ku',
+    maps:[
+      {label:'KIX Airport', q:'Kansai International Airport'},
+      {label:'JR Fukushima Stn', q:'JR Fukushima Station Osaka'},
+      {label:'Dotonbori', q:'Dotonbori Osaka'},
+      {label:'Don Quijote Dotonbori', q:'Don Quijote Dotonbori Osaka'},
+    ],
     blocks:[
-      {type:'logistics', items:[
-        ['','<b>8:00am</b> — Land at Kansai (KIX). Allow 60–90 min for immigration &amp; bags.'],
-        ['','Buy <b>ICOCA cards</b> + discounted <b>Haruka one-way</b> ticket (passport needed).'],
-        ['','Haruka → Osaka Station (~50 min), then 1 Loop Line stop to <b>Fukushima</b>.'],
-        ['','Airbnb check-in <b>4pm</b> — store bags in Namba/station coin lockers first.'],
+      {type:'logistics', title:'Getting from KIX to Fukushima', items:[
+        ['','<b>8:00am</b> — Land at Kansai (KIX). Allow <b>60–90 min</b> for immigration &amp; baggage.'],
+        ['','Buy <b>4 ICOCA cards</b> at the JR machines (~¥2,000 each = ¥1,500 credit + ¥500 deposit). A child ICOCA for the 11yr old auto-charges child fares.'],
+        ['','Also buy the discounted foreigner <b>Haruka One-way</b> ticket — <b>¥1,800 to Osaka</b> (passport / Temporary Visitor status needed). New for 2026: a <b>WEST QR e-ticket</b> skips the voucher-exchange queue.'],
+        ['','<b>Haruka Express</b> → Osaka Station (Umekita underground platform), ~50 min. Then 1 stop on the <b>JR Osaka Loop Line</b> to <b>Fukushima</b> (~3 min).'],
+        ['','Cheaper backup: <b>JR Kansai Airport Rapid</b> (Kanku Kaisoku) straight onto the Loop Line, ~70 min, ~¥1,210 — slower &amp; no luggage racks.'],
+        ['','Airbnb check-in is <b>4pm</b> — store bags in Namba or station coin lockers (payable by IC card) first.'],
       ]},
       {type:'options', title:'Afternoon — choose by energy', items:[
-        {tag:'Option A', name:'Low-key recovery', rec:true, points:[
-          'Drop bags, wander <b>Dotonbori</b> — Glico sign, crab, street food',
-          'Cafe rest, maybe a park nap',
-          'Snacks at <b>Don Quijote</b> (24hr)',
-          'Easy dinner near Fukushima — ramen or okonomiyaki',
+        {tag:'Option A', name:'Low-key recovery day', rec:true, points:[
+          'Drop bags, wander <b>Dotonbori</b> — Glico Running Man sign, Kani Doraku crab, street food',
+          'Rest at a cafe, maybe a nap in a park',
+          'Stock up at <b>Don Quijote</b> (open 24hr — cheap goods, snacks, kids love it)',
+          'Easy first dinner near Fukushima-ku — ramen or okonomiyaki',
         ]},
-        {tag:'Option B', name:'Explore immediately', points:[
-          '<b>Shinsekai</b> district — retro vibes, kushikatsu',
-          'Tennoji Zoo or <b>Abeno Harukas</b> (60th-floor views)',
-          'Dinner in Dotonbori — takoyaki, gyoza, sushi',
+        {tag:'Option B', name:'Explore Osaka immediately', points:[
+          '<b>Shinsekai</b> district — retro Showa vibes, kushikatsu deep-fried skewers',
+          '<b>Tennoji Zoo</b> or <b>Abeno Harukas</b> — tallest building in Osaka, views from the 60th floor',
+          'Dinner in Dotonbori — takoyaki, gyoza, or conveyor-belt sushi',
         ]},
       ]},
-      {type:'eat', title:'Dinner near Fukushima-ku', items:[
-        ['','Local izakaya street — great value &amp; very local'],
-        ['','<b>551 Horai</b> butaman in the Umeda dept-store food halls'],
-        ['','Osaka Ohsho (gyoza, kid-friendly) · Ichiran (solo booths)'],
+      {type:'eat', title:'Dinner near Fukushima-ku & Umeda', items:[
+        ['','<b>Fukushima izakaya alley</b> (Fukumaru Dori 57) — lively casual strip, 3-min walk from JR Fukushima. A Hankyu Oasis supermarket has a 2nd-floor eat-in space with self-serve coffee. Great low-key first night.'],
+        ['','<b>Sobakiri Karani</b> — handmade soba, mackerel/duck toppings (~¥1,500–2,500)'],
+        ['','<b>POGO</b> — friendly craft-beer izakaya, small plates from ~¥280, pizza/pasta'],
+        ['','<b>Hanakujira</b> — comforting, cheap oden'],
+        ['','<b>551 Horai</b> butaman (pork buns) in the Umeda depachika — perfect grab-and-go for tired kids'],
+        ['','Other easy picks: Osaka Ohsho (gyoza chain) · Ichiran Ramen (fun solo booths)'],
       ]},
-      {type:'tip', items:[['','Get an <b>eSIM / pocket wifi</b> at KIX arrivals too — counters for IIJmio, Softbank, Docomo.']]},
+      {type:'tip', items:[
+        ['','Get an <b>eSIM / pocket wifi</b> at KIX arrivals — counters for IIJmio, Softbank, NTT Docomo. One pocket wifi covers the whole group; an eSIM is most convenient per person.'],
+        ['','Withdraw <b>cash</b> at a 7-Bank ATM (in any 7-Eleven) — most reliable for foreign cards.'],
+        ['','Rainy evening fallback: <b>MARUZEN &amp; Junkudo Umeda</b> (7 floors, big English section, open to 22:00).'],
+      ]},
     ]
   },
   {
     n:2, date:'2026-06-03', wd:'Wednesday', area:'osaka',
     title:'Osaka morning + USJ from 3pm',
     stay:'Airbnb · Fukushima-ku',
+    maps:[
+      {label:'Osaka Castle', q:'Osaka Castle'},
+      {label:'Kuromon Market', q:'Kuromon Ichiba Market Osaka'},
+      {label:'Dotonbori', q:'Dotonbori Osaka'},
+      {label:'USJ', q:'Universal Studios Japan'},
+      {label:'Universal City Stn', q:'Universal City Station Osaka'},
+    ],
     blocks:[
+      {type:'logistics', title:'Plan', items:[
+        ['','Do a morning sight, then aim to reach USJ by ~2:30–3pm. <b>Osaka → USJ:</b> JR Loop Line + Sakurajima Line (transfer at Nishikujo) to <b>Universal City</b>, ~15–23 min, ~¥180–200.'],
+      ]},
       {type:'options', title:'Morning before USJ', items:[
-        {tag:'Option A', name:'Osaka Castle', rec:true, points:[
-          'Opens <b>9am</b> — arrive early to beat groups',
-          'Keep open 9:00–17:00 (last entry 16:30). Adult ~¥600, under-15 free',
-          'Head to USJ after lunch (~12:30pm)',
+        {tag:'Option A', name:'Osaka Castle (best with kids)', rec:true, points:[
+          'Main keep open <b>9:00–17:00</b> (last entry 16:30); grounds 24h &amp; free. <b>Adult ~¥600, under-15 free.</b>',
+          'Arrive right at 9am to beat groups; ~1–1.5 hr for the 8-floor keep/museum + views from the top',
+          'Nearest stations: Tanimachi 4-chome or Osakajokoen',
+          'Head to USJ after an early lunch (~12:30pm)',
         ]},
-        {tag:'Option B', name:'Kuromon Market', points:[
-          '150–180 stalls — go before 11am for best atmosphere',
-          'Sashimi, grilled scallops/crab, tamagoyaki, fruit',
-          'Combine with a Dotonbori walk',
+        {tag:'Option B', name:'Kuromon Ichiba Market', points:[
+          '~150–180 stalls ("Osaka\'s Kitchen") — go before 11am for the best atmosphere',
+          'Fresh sashimi sticks, grilled scallops/crab, tamagoyaki, fruit — eat as you walk',
+          'Near Nipponbashi/Namba; combine with a Dotonbori stroll',
         ]},
-        {tag:'Option C', name:'USJ early', points:[
-          'If kids are keen (or slept poorly), just go when it opens',
-          'Maximise park time, skip the morning stop',
+        {tag:'Option C', name:'Head to USJ early', points:[
+          'If the kids are keen — or slept poorly on the flight — just go when it opens',
+          'Skip the morning stop and maximise park time',
         ]},
       ]},
       {type:'sched', title:'At USJ — 3pm onward', items:[
-        ['On entry','Open the <b>USJ app</b>, grab a free Super Nintendo World timed-entry ticket immediately'],
-        ['Priority','Super Nintendo World (Mario Kart) + one Harry Potter ride'],
-        ['Evening','Harry Potter area is magical at night · Minion Park for the 11yr old'],
-        ['Dinner','Eat inside the park to save travel time'],
+        ['On entry','Open the <b>USJ app</b> and grab a free <b>Super Nintendo World</b> Area Timed-Entry ticket the moment you enter (or use your Express Pass slot)'],
+        ['Priority','With only an evening: Super Nintendo World (Mario Kart: Koopa\'s Challenge) + one Harry Potter ride'],
+        ['Evening','Wizarding World is magical at night · Minion Park is great for the 11yr old'],
+        ['Dinner','Buy dinner inside the park (Leaky Cauldron Butterbeer, Kinopio\'s Cafe if you can book it) to save travel time'],
+        ['Close','Park typically closes 8–9pm on weekdays — then back to Fukushima'],
       ]},
-      {type:'callout', items:[['⚠️','<b>2026 is USJ\'s 25th anniversary</b> — crowds at a decade high. App timed-entry can sell out by ~10:15–10:30am. From Jan 5 2026 the app is required for tickets.']]},
+      {type:'eat', title:'If lunch in Dotonbori first', items:[
+        ['','<b>Takoyaki:</b> Wanaka, Honke Ootako (oldest, since 1972), Kukuru (creamy), Acchichi Honpo — ~¥600–1,000/tray'],
+        ['','<b>Okonomiyaki:</b> Chibo or Mizuno (75-year favourite) — ~¥900–1,800'],
+        ['','<b>Kushikatsu:</b> Daruma or Shirotaya — ~¥100–200/skewer (no double-dipping the sauce!)'],
+      ]},
+      {type:'callout', items:[['⚠️','<b>2026 is USJ\'s 25th anniversary</b> ("Discover U!!!" runs through Mar 2027) — crowds at a decade high. Free app timed-entry can sell out by <b>~10:15–10:30am</b>. From <b>Jan 5 2026 the official app is required</b> for timed/standby tickets. Both kids (11 &amp; 14) clear every ride height limit.']]},
     ]
   },
   {
     n:3, date:'2026-06-04', wd:'Thursday', area:'osaka',
     title:'USJ full day',
     stay:'Airbnb · Fukushima-ku',
+    maps:[
+      {label:'USJ', q:'Universal Studios Japan'},
+      {label:'Universal City Stn', q:'Universal City Station Osaka'},
+      {label:'Namba (dinner)', q:'Namba Osaka'},
+    ],
     blocks:[
-      {type:'callout', items:[['🎟️','<b>Buy Express Passes for TODAY</b>, not Jun 3. Express Pass 7 from ~¥21,800; only <b>Premium</b> guarantees both Nintendo + Donkey Kong. Each person (incl. kids) needs their own. Buy days ahead — they sell out.']]},
-      {type:'sched', title:'Suggested full day', items:[
-        ['9:00','Gates open → straight to Super Nintendo World'],
-        ['9–11','Mario Kart, Yoshi\'s Adventure, Power-Up Band activities'],
-        ['11–12:30','Donkey Kong Country (newer, quieter mid-morning)'],
-        ['12:30','Lunch — Kinopio\'s Cafe (book via app) or Circus'],
-        ['1:30','Harry Potter — Forbidden Journey, Ollivanders, Butterbeer'],
-        ['3:30','Minion Park — Despicable Me ride + meet & greet'],
-        ['5:00','Jurassic Park water ride (bring ponchos!)'],
-        ['6:30','Re-ride favourites · evening atmosphere'],
+      {type:'callout', items:[['🎟️','<b>Buy Express Passes for TODAY (Jun 4)</b>, not Jun 3 — you want them for the full day. <b>Express Pass 7</b> from ~¥21,800 (all-rounder); EP8 ~¥23,900; only <b>Express Pass Premium</b> guarantees both Super Nintendo World <i>and</i> Donkey Kong Country entry. Note the pass does <b>not</b> include admission. Each person (incl. both kids) needs their own. Book on Klook / KKday / official a few days ahead — they sell out on busy dates.']]},
+      {type:'sched', title:'Suggested full-day schedule', items:[
+        ['9:00','Gates open — head straight to Super Nintendo World'],
+        ['9–11','Mario Kart: Koopa\'s Challenge, Yoshi\'s Adventure, Power-Up Band activities'],
+        ['11–12:30','Donkey Kong Country (newer area — quieter mid-morning; Mine Cart Madness)'],
+        ['12:30','Lunch — Kinopio\'s (Toad\'s) Cafe, reserve via app, or Circus Restaurant (sit-down lines hit 60–90 min at peak — eat early or late)'],
+        ['1:30','Wizarding World of Harry Potter — Forbidden Journey, Ollivanders wand show, Butterbeer'],
+        ['3:30','Minion Park — Despicable Me ride + character meet & greet'],
+        ['5:00','Jurassic Park — the water ride soaks you (ponchos!)'],
+        ['6:30','Re-ride favourites · catch the "NO LIMIT! Parade" · magical evening atmosphere'],
+      ]},
+      {type:'eat', title:'Dinner back in the city', items:[
+        ['','<b>Ichiran</b> or casual ramen around Namba · <b>551 Horai</b> sit-down for pork buns &amp; gyoza'],
+        ['','Conveyor-belt sushi in the Namba Hozenji area for an affordable family sushi night'],
+        ['','Dessert: <b>Rikuro Ojisan</b> jiggly cheesecake (~¥965 whole) — a kid favourite'],
       ]},
       {type:'tip', items:[
-        ['','<b>Ponchos</b> for the Jurassic Park ride — it soaks you'],
-        ['','Coin lockers inside (~¥300) · portable battery (app drains phones)'],
-        ['','Mario Power-Up Band ~¥3,500 — optional but the 11yr old will love it'],
-        ['','Stay hydrated — June is warm &amp; humid'],
+        ['','Pack <b>ponchos</b> (rainy season + the Jurassic Park ride) and a <b>portable battery</b> — the app + Power-Up Band drain phones fast'],
+        ['','Coin lockers inside the park ~¥300 for bulky items'],
+        ['','Mario Power-Up Band ~¥3,500 each — optional, but the 11yr old will love it'],
+        ['','Stay hydrated — June in Osaka is warm &amp; humid. 1-Day Studio Pass for reference: adult ~¥8,600–10,900, child ~¥5,400–6,200 (date-based)'],
       ]},
     ]
   },
@@ -378,83 +426,137 @@ const DAYS = [
     n:4, date:'2026-06-05', wd:'Friday', area:'kobe',
     title:'Kobe lunch → Arima Onsen',
     stay:'Arima Gyoen Ryokan',
+    maps:[
+      {label:'Kobe-Sannomiya', q:'Sannomiya Station Kobe'},
+      {label:'Kitano Ijinkan', q:'Kitano Ijinkan Kobe'},
+      {label:'Nankinmachi', q:'Nankinmachi Chinatown Kobe'},
+      {label:'Sannomiya Bus Term.', q:'Sannomiya Bus Terminal Mint Kobe'},
+      {label:'Arima Gyoen', q:'Arima Gyoen Ryokan Kobe'},
+    ],
     blocks:[
-      {type:'logistics', items:[
-        ['','Check out Osaka Airbnb by <b>11am</b> · Arima check-in <b>3pm</b>'],
-        ['','Fukushima → Kobe-Sannomiya: Hanshin direct ~35–40 min (~¥330), or JR Special Rapid ~22 min (~¥420)'],
-        ['','Sannomiya → Arima: <b>JR Bus "Arima Express"</b> ~30 min (~¥780), no transfers'],
+      {type:'logistics', title:'Osaka → Kobe → Arima', items:[
+        ['','Check out Osaka Airbnb by <b>11am</b> · Arima ryokan check-in <b>3pm</b>'],
+        ['','<b>Simplest:</b> walk to Hanshin Fukushima → train toward Kobe-Sannomiya, ~35–40 min, ~¥330, no transfer'],
+        ['','<b>Faster:</b> JR Fukushima → Osaka Station (1 Loop stop) → JR Special Rapid (Kobe Line) to Sannomiya, ~22 min, ~¥420 (total ~30–35 min)'],
+        ['','<b>Sannomiya → Arima:</b> from the Sannomiya Bus Terminal at Mint Kobe, the <b>JR Bus "Arima Express"</b> direct to Arima Onsen, ~30 min, ~¥780. No transfers — easiest with luggage &amp; kids.'],
+        ['','Train alt (more transfers): Subway to Tanigami → Kobe Electric Rwy to Arimaguchi → Arima branch'],
+        ['','Some ryokan offer bus/station pickup — worth asking when you confirm.'],
       ]},
-      {type:'options', title:'Kobe stop', items:[
+      {type:'options', title:'Kobe stop before Arima', items:[
         {tag:'Option A', name:'Kobe beef lunch + Kitano', rec:true, points:[
           'Store bags at Shin-Kobe / Sannomiya lockers',
-          '<b>Kitano-cho</b> — European-style Ijinkan houses (~1hr)',
-          'Kobe beef at <b>Steakland</b> (~¥3,000 set) — book ahead',
-          '2pm bus up to Arima',
+          '<b>Kitano-cho (Ijinkan):</b> European-style historic mansions — fun ~1hr walk, kids enjoy the quirky architecture',
+          'This is the moment for <b>Kobe beef</b> at the source — book ahead, popular spots fill fast',
+          'Take the 2pm bus up to Arima, check in ~3pm',
         ]},
-        {tag:'Option B', name:'Straight to Arima', points:[
-          'If kids are wiped after USJ, skip Kobe',
-          'More ryokan + bath time; grab Kobe beef snacks in the village',
+        {tag:'Option B', name:'Skip Kobe, straight to Arima', points:[
+          'If the kids are exhausted after 2 USJ days, head directly up',
+          'More time at the ryokan, use the baths earlier',
+          'Grab Kobe beef snacks on the walk around Arima village',
         ]},
+      ]},
+      {type:'eat', title:'Kobe beef lunch (affordable picks)', items:[
+        ['','<b>Steakland Kobe</b> (Sannomiya) — popular teppanyaki sets ~¥3,000; expect a line'],
+        ['','<b>Kobe Steak Propeller</b> — casual, cozy; Steak S lunch (100g) ~¥3,000 + ~¥500 set'],
+        ['','<b>Hiroshige</b> — Kobe beef gyudon ~¥1,500; tiny (~10 seats), the cheapest taste of Kobe beef'],
+        ['','<b>Nagata Tank Suji</b> (Sun Plaza B1F) — Kobe soul-food sobameshi + beef-tendon bokkake, ~¥800–1,500'],
+        ['','<b>Nankinmachi</b> Chinatown street food — pork buns, fried soup dumplings, beef croquettes, ~¥200–800'],
+        ['','Cafe en route: <b>Freundlieb</b> (Kitano) — bakery in a 1929 former church (closed Wed)'],
+      ]},
+      {type:'see', title:'Arima Onsen village', items:[
+        ['','One of Japan\'s three oldest hot springs (~1,300 yrs). Two waters: <b>Kinsen</b> (gold — iron/salt, reddish-brown) &amp; <b>Ginsen</b> (silver — clear, carbonated)'],
+        ['','Public baths (even with the ryokan\'s own): <b>Kin no Yu</b> ~¥650/800, 9:00–21:00, closed 2nd &amp; 4th Tue · <b>Gin no Yu</b> ~¥550/700, closed 1st &amp; 3rd Tue · combo ~¥1,200. Free footbath outside Kin no Yu.'],
+        ['','Stroll Yumotozaka &amp; Tansan-zaka slopes · Onsen-ji Temple · Nene-bashi bridge · <b>Toys &amp; Automata Museum</b> (good for kids)'],
+        ['','Specialties: <b>tansan senbei</b> (carbonated crackers), <b>Arima cider</b>, onsen manju. The <b>Arima Tansanriki</b> shop sells novelty ciders (gyoza, curry-bread!) — fun with kids'],
       ]},
       {type:'eat', title:'At Arima Gyoen', items:[
-        ['','Kobe beef <b>kaiseki dinner + breakfast included</b> — confirm when booking'],
-        ['','Two springs: <b>Kinsen</b> (gold, iron-rich) &amp; <b>Ginsen</b> (silver, carbonated)'],
-        ['','Stroll the village after dinner — tansan senbei, Arima cider, manju'],
+        ['','Kobe beef multi-course <b>kaiseki dinner + traditional breakfast included</b> — confirm when booking'],
+        ['','Soak in both the Kinsen &amp; Ginsen baths · walk the village after dinner'],
       ]},
-      {type:'callout', items:[['♨️','<b>Onsen etiquette:</b> wash &amp; rinse thoroughly first · no swimwear · tie hair up · tattoos usually not allowed in public baths (use the ryokan\'s private bath). Separate baths for men &amp; women — kids 11 &amp; 14 go with a parent.']]},
+      {type:'callout', items:[['♨️','<b>First-time onsen tips:</b> wash &amp; rinse thoroughly before entering · no swimwear · tie long hair up · no towels in the water · keep kids quiet &amp; supervised. <b>Tattoos</b> are usually not allowed in public baths — use the ryokan\'s private/family bath or cover with patches. Separate baths for men &amp; women; the 11 &amp; 14yr olds go with a parent.']]},
     ]
   },
   {
     n:5, date:'2026-06-06', wd:'Saturday', area:'kyoto',
     title:'Arima → Kyoto',
     stay:'Airbnb · Bishamoncho',
+    maps:[
+      {label:'Kyoto Station', q:'Kyoto Station'},
+      {label:'Nishiki Market', q:'Nishiki Market Kyoto'},
+      {label:'Fushimi Inari', q:'Fushimi Inari Taisha'},
+      {label:'Gion', q:'Gion Kyoto'},
+      {label:'Kiyomizudera', q:'Kiyomizudera Temple Kyoto'},
+    ],
     blocks:[
-      {type:'logistics', items:[
-        ['','Check out Arima by <b>10am</b> · Kyoto check-in <b>3pm</b> (Bishamoncho, Higashiyama)'],
-        ['','Best: <b>direct highway bus Arima → Kyoto Station</b> ~70–75 min (~¥1,850). Reserve at the ryokan — limited seats.'],
-        ['','Backup: bus/train to Sannomiya → JR Special Rapid to Kyoto (~1hr, ~¥1,110)'],
-        ['','Store bags in Kyoto Station lockers (~¥500–700) if before 3pm.'],
+      {type:'logistics', title:'Arima → Kyoto', items:[
+        ['','Check out Arima by <b>10am</b> · Kyoto Airbnb check-in <b>3pm</b> (Bishamoncho, Higashiyama) — relaxed morning, so a final soak/footbath + souvenir crackers first'],
+        ['','<b>Best:</b> direct highway bus Arima → Kyoto Station (Hachijo side), ~70–75 min, ~¥1,850. Reserve in advance (limited, seasonal) — confirm the timetable at the ryokan.'],
+        ['','<b>Backup:</b> bus/Kobe Electric Rwy down to Sannomiya → JR Special Rapid to Kyoto, ~1 hr, ~¥1,110 (or Shinkansen from Shin-Kobe ~30 min, ~¥2,870)'],
+        ['','From Kyoto Station to the Bishamoncho Airbnb (Higashiyama/Gion): short taxi ~¥1,200–1,800 or city bus. Store bags in Kyoto Station coin lockers (~¥500–700) if before 3pm.'],
       ]},
       {type:'options', title:'Afternoon in Kyoto', items:[
         {tag:'Option A', name:'Fushimi Inari + Nishiki', rec:true, points:[
-          '<b>Nishiki Market</b> — yuba, matcha soft serve, mochi, pickles',
-          '<b>Fushimi Inari</b> — thousands of torii gates, free, 24h',
-          'Lower trail 30–45 min; full hike 2–3 hr',
+          '<b>Nishiki Market</b> ("Kyoto\'s Kitchen") — yuba, matcha soft serve, fresh mochi, pickles; 15 min from Kyoto Station',
+          '<b>Fushimi Inari Taisha</b> — thousands of orange torii gates; free, open 24h (JR Inari, 5 min / ¥150 from Kyoto Stn)',
+          'Lower trail is an easy, spectacular 30–45 min; full mountain hike 2–3 hr. Fox statues everywhere — kids love them',
+          'Crowds ease by midday; arriving ~noon on a Saturday is fine',
         ]},
         {tag:'Option B', name:'Gion + Philosopher\'s Path', points:[
-          'Hanamikoji St — machiya townhouses, maybe a geisha sighting',
-          '<b>Philosopher\'s Path</b> — peaceful 2km canal walk',
-          '<b>Nanzenji</b> — huge wooden gate, free outer grounds',
+          'Walk Hanamikoji St in Gion — wooden machiya townhouses, possible geisha sighting late afternoon',
+          '<b>Philosopher\'s Path</b> — peaceful 2km tree-lined canal walk',
+          '<b>Nanzenji</b> — massive wooden gate &amp; beautiful grounds (free outer area)',
         ]},
       ]},
-      {type:'tip', items:[['','Since you\'re based in Higashiyama, <b>Kiyomizudera + Ninenzaka/Sannenzaka</b> is also a great first-evening walk near the Airbnb.']]},
+      {type:'eat', title:'Evening in Gion/Higashiyama', items:[
+        ['','<b>Gion Tanto</b> — okonomiyaki/teppanyaki cooked at your table, English menu, vegan options (~¥1,500–3,000). Fun for kids.'],
+        ['','<b>Mimikou</b> — Kyoto curry udon (~¥1,000–1,500) · <b>Kyou-no-Jidoriya Aki</b> — local-chicken, lunch ramen ~¥850'],
+        ['','Dessert: <b>Gion Tsujiri</b> matcha parfait · <b>% Arabica Higashiyama</b> coffee'],
+      ]},
+      {type:'tip', items:[['','Since you\'re based in Higashiyama, <b>Kiyomizudera + Ninenzaka/Sannenzaka</b> is a great first-evening walk near the Airbnb. Kiyomizudera ~6:00–18:00, ~¥500.']]},
     ]
   },
   {
     n:6, date:'2026-06-07', wd:'Sunday', area:'kyoto',
     title:'Arashiyama day',
     stay:'Airbnb · Bishamoncho',
+    maps:[
+      {label:'Bamboo Grove', q:'Arashiyama Bamboo Grove Kyoto'},
+      {label:'Tenryu-ji', q:'Tenryuji Temple Kyoto'},
+      {label:'Monkey Park', q:'Iwatayama Monkey Park Arashiyama'},
+      {label:'Togetsukyo Bridge', q:'Togetsukyo Bridge Arashiyama'},
+      {label:'Kinkakuji', q:'Kinkakuji Golden Pavilion Kyoto'},
+      {label:'Kiyomizudera', q:'Kiyomizudera Temple Kyoto'},
+      {label:'Nijo Castle', q:'Nijo Castle Kyoto'},
+    ],
     blocks:[
-      {type:'sched', title:'Route A — Nature & views', items:[
-        ['7:30','<b>Bamboo Grove</b> — arrive before 8am, almost empty (free)'],
-        ['8:30','Tenryu-ji Zen garden (opens 8:30, ~¥500)'],
-        ['9:30','Iwatayama Monkey Park — 20-min hike, ~120 macaques, panorama (adult ~¥800 / child ~¥400, cash)'],
-        ['11:00','Lunch by Togetsukyo Bridge — yudofu or soba'],
-        ['1:00','Kinkakuji — Golden Pavilion (~¥500)'],
-        ['2:30','Ryoanji rock garden (~¥600)'],
-        ['Eve','Dinner in Gion or Pontocho alley'],
+      {type:'logistics', title:'Getting there', items:[
+        ['','<b>JR Saga-Arashiyama</b> from Kyoto Station, ~15 min, ~¥240. Beat crowds: be at the bamboo grove before 8:30am.'],
       ]},
-      {type:'sched', title:'Route B — Temples & history', items:[
-        ['9:00','Kiyomizudera — wooden stage, stunning views (~¥500)'],
-        ['10:30','Ninenzaka / Sannenzaka — cobblestone shopping lanes'],
-        ['12:00','Lunch in Higashiyama'],
-        ['2:00','Gion Shijo — Hanamikoji, browse shops'],
-        ['3:30','Nijo Castle — squeaky "nightingale floors" (~¥1,300)'],
-        ['5:30','Nishiki Market before it closes (~6pm)'],
+      {type:'sched', title:'Route A — Nature & views (active)', items:[
+        ['7:30','<b>Bamboo Grove</b> (Chikurin no Komichi) — arrive before 8am, almost empty; free, ~400m path. Enter via Tenryuji\'s north gate for the quieter end'],
+        ['8:30','<b>Tenryu-ji</b> — UNESCO Zen garden (opens 8:30, ~¥500; ¥600 combo with Gioji)'],
+        ['9:30','<b>Iwatayama Monkey Park</b> — ~20-min uphill hike, ~120 wild macaques + Kyoto panorama (adult ~¥800 / child ~¥400, <b>cash only</b>, 9:00–16:30)'],
+        ['11:00','Lunch near Togetsukyo Bridge — <b>yudofu</b> (simmered tofu, ~¥2,000–3,000) or soba'],
+        ['1:00','<b>Kinkakuji</b> (Golden Pavilion) — iconic gold-leaf temple (~9:00–17:00, ~¥500)'],
+        ['2:30','<b>Ryoanji</b> — famous 15-stone rock garden (~8:00–17:00, ~¥600)'],
+        ['Eve','Dinner in Gion or atmospheric <b>Pontocho</b> alley'],
+      ]},
+      {type:'sched', title:'Route B — Temples & history (cultural)', items:[
+        ['9:00','<b>Kiyomizudera</b> — wooden stage over the hillside, stunning views (~¥500)'],
+        ['10:30','<b>Ninenzaka / Sannenzaka</b> — cobblestone lanes, traditional shops, great souvenirs'],
+        ['12:00','Lunch in Higashiyama — kaiseki set or casual bento'],
+        ['2:00','<b>Gion Shijo</b> — walk Hanamikoji, browse shops'],
+        ['3:30','<b>Nijo Castle</b> — Tokugawa palace with squeaky "nightingale floors" (great for kids; ~8:45–17:00, ~¥1,300, closed some Tue)'],
+        ['5:30','<b>Nishiki Market</b> before it closes (~6pm)'],
+      ]},
+      {type:'eat', title:'Arashiyama eats & cafes', items:[
+        ['','<b>Yudofu houses</b> near Tenryuji — the Arashiyama specialty (~¥2,000–3,000)'],
+        ['','Casual: shichirin-grilled dango stalls, soba/udon, matcha soft-serve along the main street'],
+        ['','<b>% Arabica Arashiyama</b> — riverside coffee with a spectacular view (often a line) · <b>Okochi Sanso</b> tea house — matcha in a villa garden'],
       ]},
       {type:'tip', items:[
-        ['','Monkey Park is <b>cash only</b> · keep 2m distance, no eye contact, no touching'],
-        ['','Heavy all-day rain? Swap with Day 7\'s indoor book/manga day.'],
+        ['','Monkey Park is <b>cash only</b> · keep 2m distance, no eye contact, no touching; feed them from inside the hut'],
+        ['','Heavy all-day rain forecast? Swap with Day 7\'s indoor book/manga day.'],
       ]},
     ]
   },
@@ -462,50 +564,75 @@ const DAYS = [
     n:7, date:'2026-06-08', wd:'Monday', area:'kyoto',
     title:'Kyoto book day · or Nara',
     stay:'Airbnb · Bishamoncho',
+    maps:[
+      {label:'Keibunsha Ichijoji', q:'Keibunsha Ichijoji Kyoto'},
+      {label:'Manga Museum', q:'Kyoto International Manga Museum'},
+      {label:'Maruzen Kyoto', q:'Maruzen Kyoto BAL Kawaramachi'},
+      {label:'Nishiki Market', q:'Nishiki Market Kyoto'},
+      {label:'Nara Park', q:'Nara Park'},
+      {label:'Todai-ji', q:'Todaiji Temple Nara'},
+    ],
     blocks:[
       {type:'options', title:'Pick your day', items:[
-        {tag:'Option A', name:'Kyoto bookshops + central', rec:true, points:[
-          '<b>Keibunsha Ichijoji</b> — one of the world\'s most beautiful bookstores',
-          '<b>Kyoto Intl Manga Museum</b> — 50,000 readable volumes, kids read for hours (open Mon; ¥1,200/400/200)',
-          'Maruzen Kyoto (lemon cake) · Nishiki Market lunch',
+        {tag:'Option A', name:'Kyoto bookshops + central sights', rec:true, points:[
+          '<b>Keibunsha Ichijoji</b> (Eizan line; ~10:00–21:00) — named by The Guardian one of the world\'s 10 most beautiful bookstores. Gallery, stationery, cafe',
+          '<b>Kyoto Intl Manga Museum</b> — ~50,000 readable volumes on a 200m "Wall of Manga"; kids read for hours (10:30–17:30, closed Wed → <b>open this Monday</b>; ¥1,200 / ¥400 / ¥200)',
+          '<b>Maruzen Kyoto</b> (B1–B2 Kyoto BAL) — big foreign-language section + the famous lemon cake at Maruzen Cafe',
+          'Also: Hohohoza (near Ginkakuji), Seikosha (Kawaramachi-Marutamachi) · Nishiki Market lunch',
         ]},
         {tag:'Option B', name:'Nara day trip', points:[
-          '<b>Nara Park</b> — 1,200+ bowing deer, crackers ~¥200',
-          '<b>Todai-ji</b> — giant bronze Buddha, world\'s largest wooden hall (~¥800)',
-          'JR Miyakoji Rapid or Kintetsu ~45 min (~¥720/760)',
+          '<b>Nara Park</b> — 1,200+ free-roaming deer that bow for crackers (shika senbei ~¥200); keep crackers hidden until ready',
+          '<b>Todai-ji</b> — ~15m bronze Buddha in the world\'s largest wooden hall (~¥800); kids can crawl through the "enlightenment" pillar hole',
+          'Also nearby: Kasuga Taisha lanterns, Kofukuji pagoda, Naramachi old town',
+          'Kyoto Station → Nara: JR Miyakoji Rapid ~45 min ~¥720, or Kintetsu Express ~45 min ~¥760 (closer to the park)',
         ]},
-        {tag:'Option C', name:'Slow + shopping', points:[
-          'Sleep in · Teramachi arcade — antiques, ceramics, matcha',
-          'Kyoto Station building — observation deck, Isetan depachika',
+        {tag:'Option C', name:'Slow morning + shopping', points:[
+          'Sleep in, leisurely breakfast',
+          '<b>Teramachi</b> covered arcade — antiques, ceramics, matcha goods',
+          '<b>Kyoto Station building</b> — dramatic architecture, observation deck, Isetan depachika for snacks',
         ]},
       ]},
-      {type:'callout', items:[['🧳','<b>Pack tonight</b> — check-out is 10am tomorrow. Last dinner idea: shabu-shabu (cook at the table) or Kyoto kaiseki.']]},
+      {type:'eat', title:'Eat', items:[
+        ['','<b>Central Kyoto:</b> Gyoza Chao Chao (bite-size, value sets; 30–60 min queue) · Gyukatsu Katsugyu (Pontocho) · Nishiki Market grazing'],
+        ['','<b>Kissaten:</b> Smart Coffee (hotcakes, since 1932) · Inoda Coffee Honten (since 1940)'],
+        ['','<b>If in Nara:</b> Hiraso kakinoha-zushi (picnic boxes) · <b>Nakatanidou</b> high-speed mochi-pounding show (cash, winds down ~3pm) · Mahoroba Daibutsu Pudding'],
+        ['','<b>Via Kyoto Station:</b> Ramen Koji (8 regional shops, 10F) · Katsukura tonkatsu (free refills — great for teens)'],
+      ]},
+      {type:'callout', items:[['🧳','<b>Pack tonight</b> — check-out is 10am tomorrow. Last-dinner idea: shabu-shabu (cook at the table — fun for the family) or a Kyoto kaiseki if budget allows.']]},
     ]
   },
   {
     n:8, date:'2026-06-09', wd:'Tuesday', area:'travel',
     title:'Departure · KIX 6pm',
     stay:'Fly home',
+    maps:[
+      {label:'Kyoto Station', q:'Kyoto Station'},
+      {label:'Fushimi Inari', q:'Fushimi Inari Taisha'},
+      {label:'Dotonbori', q:'Dotonbori Osaka'},
+      {label:'KIX Airport', q:'Kansai International Airport'},
+    ],
     blocks:[
-      {type:'logistics', items:[
-        ['','Check out by <b>10am</b> · Flight KIX <b>6pm</b> — be at airport by ~3pm'],
-        ['','<b>Haruka Express</b> Kyoto → KIX direct, ~75 min (~¥3,060 / ~¥2,200 discount). Runs every 30 min.'],
-        ['','Aim to leave Kyoto Station by ~1:30pm.'],
+      {type:'logistics', title:'Kyoto → KIX', items:[
+        ['','Check out by <b>10am</b> · Flight KIX <b>6pm</b> — for an international flight, be at the airport ~3 hrs early (~3pm)'],
+        ['','<b>Haruka Express</b> Kyoto → KIX, direct, no transfer, ~75 min (~¥3,060, or ~¥2,200 foreigner discount). Runs every ~30 min.'],
+        ['','Aim to leave Kyoto Station by ~1:30pm. The Haruka arrives right at the airport station — follow signs up to departures.'],
       ]},
       {type:'options', title:'Morning buffer', items:[
         {tag:'Option A', name:'Relaxed Kyoto morning', rec:true, points:[
-          'Slow breakfast, last omiyage at Kyoto Station (matcha Kit Kats)',
-          'Fushimi Inari at 7–8am is quiet &amp; on the way south',
-          '12:30–1:00pm Haruka → arrive KIX ~2:15pm',
+          'Slow breakfast near the Airbnb, easy check-out',
+          '<b>Fushimi Inari</b> at 7–8am is quiet, photogenic &amp; on the way south',
+          'Last omiyage at Kyoto Station (matcha Kit Kats) · grab an ekiben',
+          'Take the 12:30–1:00pm Haruka → arrive KIX ~2:15pm',
         ]},
         {tag:'Option B', name:'Quick Osaka stop', points:[
-          'Train to Namba — 1 hr in Dotonbori for last takoyaki',
-          'Nankai Line to KIX (~45 min) — leave Namba by 2:30pm latest',
+          'Train to Namba — 1 hr in <b>Dotonbori</b> for last takoyaki &amp; photos',
+          'Nankai Line to KIX (~45 min) — leave Namba by 2:30pm at the latest',
         ]},
       ]},
       {type:'tip', items:[
-        ['','KIX intl terminal: Royce, Calbee, matcha everything, Uniqlo'],
-        ['','Refund ICOCA deposit at a JR office, or keep it (valid ~10 yrs)'],
+        ['','At KIX: great shops (Royce chocolate, Calbee, matcha everything, Uniqlo) and good food — ramen or tempura for a last meal. Allow ~45 min for security.'],
+        ['','Refund the ICOCA deposit at a JR ticket office (¥500 back minus ¥220 handling), or keep the card — valid ~10 yrs'],
+        ['','June 9 is a Tuesday — double-check any morning target isn\'t on its weekly closure'],
       ]},
     ]
   },
@@ -638,7 +765,7 @@ function liHTML(items){
   return items.map(([_,html])=>`<div class="li"><span class="bullet"></span><span>${html}</span></div>`).join('');
 }
 function blockHTML(b){
-  const heads={logistics:['📍','Logistics'],eat:['🍜','Eat'],tip:['💡','Tips'],sched:['🕘',b.title||'Schedule'],options:['🔀',b.title||'Options'],callout:['','']};
+  const heads={logistics:['📍','Logistics'],eat:['🍜','Eat & drink'],tip:['💡','Tips'],sched:['🕘','Schedule'],options:['🔀','Options'],see:['⛩️','See & do'],callout:['','']};
   if(b.type==='callout'){
     return b.items.map(([ic,html])=>`<div class="callout"><span class="ic">${ic}</span><span>${html}</span></div>`).join('');
   }
@@ -654,9 +781,15 @@ function blockHTML(b){
   } else {
     inner = liHTML(b.items);
   }
-  const [ic,label]=heads[b.type]||['',''];
+  const [ic,defLabel]=heads[b.type]||['',''];
+  const label = b.title || defLabel;
   const h = label?`<div class="block-h"><span class="ic">${ic}</span>${label}</div>`:'';
   return `<div class="block">${h}${inner}</div>`;
+}
+function navMapsHTML(d){
+  if(!d.maps || !d.maps.length) return '';
+  const chips = d.maps.map(m=>`<a class="navchip" href="${mapURL(m.q)}" target="_blank" rel="noopener">${PIN}${m.label}</a>`).join('');
+  return `<div class="navmaps"><span class="nh">Navigate to</span>${chips}</div>`;
 }
 function renderDays(todayIdx){
   const wrap=$('#days');
@@ -675,7 +808,7 @@ function renderDays(todayIdx){
         </div>
         <span class="chev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
       </div>
-      <div class="day-body">${d.blocks.map(blockHTML).join('')}</div>
+      <div class="day-body">${d.blocks.map(blockHTML).join('')}${navMapsHTML(d)}</div>
     </article>`;
   }).join('');
   wrap.querySelectorAll('.day-card').forEach(card=>{
