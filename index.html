@@ -300,6 +300,7 @@ const DAYS = [
     stay:'Airbnb · Fukushima-ku',
     maps:[
       {label:'KIX Airport', q:'Kansai International Airport'},
+      {label:'Airbnb · 8-14-7', q:'8-14-7 Fukushima-ku Osaka 553-0003'},
       {label:'JR Fukushima Stn', q:'JR Fukushima Station Osaka'},
       {label:'Dotonbori', q:'Dotonbori Osaka'},
       {label:'Don Quijote Dotonbori', q:'Don Quijote Dotonbori Osaka'},
@@ -307,10 +308,9 @@ const DAYS = [
     blocks:[
       {type:'logistics', title:'Getting from KIX to Fukushima', items:[
         ['','<b>8:00am</b> — Land at Kansai (KIX). Allow <b>60–90 min</b> for immigration &amp; baggage.'],
-        ['','Buy <b>4 ICOCA cards</b> at the JR machines (~¥2,000 each = ¥1,500 credit + ¥500 deposit). A child ICOCA for the 11yr old auto-charges child fares.'],
-        ['','Also buy the discounted foreigner <b>Haruka One-way</b> ticket — <b>¥1,800 to Osaka</b> (passport / Temporary Visitor status needed). New for 2026: a <b>WEST QR e-ticket</b> skips the voucher-exchange queue.'],
-        ['','<b>Haruka Express</b> → Osaka Station (Umekita underground platform), ~50 min. Then 1 stop on the <b>JR Osaka Loop Line</b> to <b>Fukushima</b> (~3 min).'],
-        ['','Cheaper backup: <b>JR Kansai Airport Rapid</b> (Kanku Kaisoku) straight onto the Loop Line, ~70 min, ~¥1,210 — slower &amp; no luggage racks.'],
+        ['','Buy <b>4 ICOCA cards</b> at the JR machines (~¥2,000 each = ¥1,500 credit + ¥500 deposit). A child ICOCA for the 11yr old auto-charges child fares. <b>No separate train ticket needed</b> — just tap in/out with ICOCA.'],
+        ['','Take the <b>JR Kansai Airport Rapid</b> (Kanku Kaisoku) toward Osaka — it runs straight onto the JR Osaka Loop Line, so you can ride through to <b>Fukushima</b>, ~70 min, ~¥1,210. (If your train terminates at Osaka Station, just change there for one stop to Fukushima.)'],
+        ['','Faster paid alternative: the <b>Haruka Express</b> to Osaka Station (~50 min) + 1 Loop stop — has luggage racks but needs the ¥1,800 discounted foreigner ticket (passport required).'],
         ['','Airbnb check-in is <b>4pm</b> — store bags in Namba or station coin lockers (payable by IC card) first.'],
       ]},
       {type:'options', title:'Afternoon — choose by energy', items:[
@@ -482,6 +482,7 @@ const DAYS = [
     stay:'Airbnb · Bishamoncho',
     maps:[
       {label:'Kyoto Station', q:'Kyoto Station'},
+      {label:'Airbnb · Bishamonchō', q:'40 Bishamonchō Shimogyo-ku Kyoto 600-8311'},
       {label:'Nishiki Market', q:'Nishiki Market Kyoto'},
       {label:'Fushimi Inari', q:'Fushimi Inari Taisha'},
       {label:'Gion', q:'Gion Kyoto'},
@@ -492,7 +493,7 @@ const DAYS = [
         ['','Check out Arima by <b>10am</b> · Kyoto Airbnb check-in <b>3pm</b> (Bishamoncho, Higashiyama) — relaxed morning, so a final soak/footbath + souvenir crackers first'],
         ['','<b>Best:</b> direct highway bus Arima → Kyoto Station (Hachijo side), ~70–75 min, ~¥1,850. Reserve in advance (limited, seasonal) — confirm the timetable at the ryokan.'],
         ['','<b>Backup:</b> bus/Kobe Electric Rwy down to Sannomiya → JR Special Rapid to Kyoto, ~1 hr, ~¥1,110 (or Shinkansen from Shin-Kobe ~30 min, ~¥2,870)'],
-        ['','From Kyoto Station to the Bishamoncho Airbnb (Higashiyama/Gion): short taxi ~¥1,200–1,800 or city bus. Store bags in Kyoto Station coin lockers (~¥500–700) if before 3pm.'],
+        ['','Your Airbnb (40 Bishamonchō, Shimogyo-ku) is only ~10 min walk NW of Kyoto Station, near Nishi Honganji — drop bags there, or use Kyoto Station coin lockers (~¥500–700) if before the 3pm check-in.'],
       ]},
       {type:'options', title:'Afternoon in Kyoto', items:[
         {tag:'Option A', name:'Fushimi Inari + Nishiki', rec:true, points:[
@@ -512,7 +513,7 @@ const DAYS = [
         ['','<b>Mimikou</b> — Kyoto curry udon (~¥1,000–1,500) · <b>Kyou-no-Jidoriya Aki</b> — local-chicken, lunch ramen ~¥850'],
         ['','Dessert: <b>Gion Tsujiri</b> matcha parfait · <b>% Arabica Higashiyama</b> coffee'],
       ]},
-      {type:'tip', items:[['','Since you\'re based in Higashiyama, <b>Kiyomizudera + Ninenzaka/Sannenzaka</b> is a great first-evening walk near the Airbnb. Kiyomizudera ~6:00–18:00, ~¥500.']]},
+      {type:'tip', items:[['','You\'re based near Kyoto Station (Shimogyo-ku), so <b>Fushimi Inari is just 1–2 stops south</b> — an easy first afternoon. Gion/Higashiyama is a short bus or train across town for the evening.']]},
     ]
   },
   {
@@ -639,14 +640,14 @@ const DAYS = [
 ];
 
 const STAYS = [
-  {area:'osaka', dates:'Jun 2 – 5', nm:'Airbnb · Fukushima-ku, Osaka', det:'Hosted by Yuki · partial addr "8-14-7". Check-in 4pm / out 11am. Nearest: JR Fukushima (Loop Line) &amp; Hanshin Fukushima. <b>Confirm exact pin in the Airbnb app.</b>', map:'JR Fukushima Station Osaka', maplabel:'JR Fukushima Station'},
+  {area:'osaka', dates:'Jun 2 – 5', nm:'Airbnb · Fukushima-ku, Osaka', det:'Hosted by Yuki. <b>8-14-7, Fukushima-ku, Osaka City, Osaka 553-0003.</b> Check-in 4pm / out 11am. Nearest: JR Fukushima (Loop Line) &amp; Hanshin Fukushima, a few min walk.', map:'8-14-7 Fukushima-ku Osaka 553-0003', maplabel:'8-14-7 Fukushima-ku'},
   {area:'kobe', dates:'Jun 5 – 6', nm:'Arima Gyoen Ryokan', det:'651-1401, 1296 Arimacho, Kita-ku, Kobe-shi, Hyogo. Check-in 3pm / out 10am. Reservation <code>22315095570284</code>. Kaiseki dinner + breakfast included.', map:'Arima Gyoen Ryokan Kobe', maplabel:'Arima Gyoen'},
-  {area:'kyoto', dates:'Jun 6 – 9', nm:'Airbnb · Bishamoncho, Kyoto', det:'Hosted by 幻 毘沙門 · "40 Bishamonchō". Likely Higashiyama/Gion. Check-in 3pm / out 10am. <b>Several Kyoto neighbourhoods share this name — verify the ward in the app.</b>', map:'Bishamoncho Higashiyama Kyoto', maplabel:'Bishamoncho, Higashiyama'},
+  {area:'kyoto', dates:'Jun 6 – 9', nm:'Airbnb · Bishamoncho, Kyoto', det:'Hosted by 幻 毘沙門. <b>40 Bishamonchō, Shimogyo-ku, Kyoto 600-8311.</b> Check-in 3pm / out 10am. Near Nishi Honganji, ~10 min walk NW of <b>Kyoto Station</b> (Shimogyo-ku — not Higashiyama). Excellent base for the Haruka, the Arima bus &amp; day trips.', map:'40 Bishamonchō Shimogyo-ku Kyoto 600-8311', maplabel:'40 Bishamonchō (Shimogyo-ku)'},
 ];
 
 const TRANSPORT = [
-  {l:'KIX → Osaka (Fukushima)', s:'Haruka + 1 Loop stop', t:'~55 min', f:'¥1,800*'},
-  {l:'KIX → Osaka', s:'Kansai Airport Rapid', t:'~70 min', f:'~¥1,210'},
+  {l:'KIX → Fukushima (Jun 2)', s:'JR Kansai Airport Rapid → Loop Line', t:'~70 min', f:'~¥1,210'},
+  {l:'KIX → Osaka', s:'Haruka Express + 1 Loop stop', t:'~55 min', f:'¥1,800*'},
   {l:'Osaka → USJ', s:'JR Loop + Sakurajima (chg Nishikujo)', t:'~15–23 min', f:'~¥180'},
   {l:'Osaka → Kobe-Sannomiya', s:'JR Special Rapid', t:'~22 min', f:'~¥420'},
   {l:'Osaka-Umeda → Sannomiya', s:'Hanshin/Hankyu', t:'~30 min', f:'~¥330'},
