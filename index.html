@@ -357,6 +357,9 @@ const DAYS = [
       {label:'Don Quijote Dotonbori', q:'Don Quijote Dotonbori Soemoncho Osaka'},
       {label:'Pokémon Center Umeda', q:'Pokemon Center Osaka Daimaru Umeda'},
       {label:'Abeno Harukas', q:'Abeno Harukas 300 Observatory Osaka'},
+      {label:'Kaiyukan Aquarium', q:'Osaka Aquarium Kaiyukan Tempozan'},
+      {label:'Tempozan Ferris Wheel', q:'Tempozan Giant Ferris Wheel Osaka'},
+      {label:'Tombori River Cruise', q:'Tombori River Cruise Tazaemonbashi Pier Osaka'},
     ],
     route:['Kansai International Airport Terminal 1','JR Fukushima Station Osaka','Dotonbori Osaka'],
     blocks:[
@@ -385,9 +388,11 @@ const DAYS = [
         {tag:'Option A', name:'Low-key recovery day', rec:true, points:[
           'Ease into Japan time — Singapore is only 1h behind, so jet lag is mild; just push first sleep to ~21:00–22:00',
           ['<b>Don Quijote Dotonbori</b> (Soemoncho, <b>open 24h</b>, 6 floors + duty-free) — snacks, gadgets, the yellow Ferris wheel; a guaranteed tween/teen win','Don Quijote Dotonbori Soemoncho Osaka'],
+          ['<b>Tombori River Cruise</b> — a relaxed <b>20-min boat</b> under the Glico sign, gets tired legs off the pavement. Daily <b>11:00–21:00</b>, departs every 30 min from <b>Tazaemonbashi Pier</b> (right beside Don Quijote). <b>¥2,000 adult · ¥1,000 the 13yo</b> (student) <b>· ¥500 the 11yo</b> (elementary). Same-day tickets only — can fill up, so go early','Tombori River Cruise Tazaemonbashi Pier Osaka'],
         ], sched:[
           ['~13:00','Lunch already done on the walk in — drop bags at the Airbnb &amp; <b>ask for early check-in</b>; if not ready, leave them inside or use a coin locker'],
           ['~13:30','Train down to <b>Dotonbori</b> — Glico Running Man sign, Kani Doraku crab, canal &amp; street food','Dotonbori Osaka'],
+          ['~15:00','Optional <b>Tombori River Cruise</b> (20 min) from Tazaemonbashi Pier, next to Don Quijote','Tombori River Cruise Tazaemonbashi Pier Osaka'],
           ['~15:30','<b>Don Quijote Dotonbori</b> for snacks &amp; supplies','Don Quijote Dotonbori Soemoncho Osaka'],
           ['~16:00','Back to Fukushima — settle in (or check in now if it wasn’t ready earlier), rest &amp; freshen up'],
           ['~18:30','Easy first dinner near Fukushima-ku (see below)'],
@@ -404,6 +409,17 @@ const DAYS = [
           ['~17:00','<b>Abeno Harukas 300</b> for jet-lag-friendly dusk &amp; night views','Abeno Harukas 300 Observatory Osaka'],
           ['~19:00','Dinner in Dotonbori; check in to the Airbnb after (bags were in a locker)','Dotonbori Osaka'],
         ]},
+        {tag:'Option C', name:'Osaka Bay — Kaiyukan aquarium &amp; Tempozan', points:[
+          ['<b>Osaka Aquarium Kaiyukan</b> — one of the world’s largest, built around a 9 m-deep central tank with a <b>whale shark</b>. It’s <b>fully indoor</b>, so it’s the ideal jet-lag / passing-shower pick. Open <b>~10:00–20:00</b> (last entry 19:00); dynamic pricing — <b>adult ¥2,300–2,700, both boys ¥1,200–1,400</b> (ages 7–15). <b>Buy a timed online ticket</b> to skip the line','Osaka Aquarium Kaiyukan Tempozan'],
+          ['<b>Tempozan</b> next door — the <b>Giant Ferris Wheel</b> (~¥800, lovely at dusk over the bay), <b>LEGOLAND Discovery Center</b> (skews younger but fun), and the <b>Tempozan Marketplace</b> food court for an easy early dinner','Tempozan Giant Ferris Wheel Osaka'],
+          '<b>From Fukushima:</b> Osaka Metro to <b>Osakako</b> on the Chuo line (via Hommachi or Bentencho), ~25–30 min — the aquarium is a 5-min walk from exit 1',
+        ], sched:[
+          ['~13:00','Lunch done on the walk in — drop bags at the Airbnb &amp; ask for early check-in; if not ready, into a coin locker'],
+          ['~13:45','Head to <b>Osakako</b> (Chuo line) for the bay','Osakako Station Osaka'],
+          ['~14:15','<b>Kaiyukan</b> — follow the spiral down past the whale shark; ~2–2.5 hr, all indoors','Osaka Aquarium Kaiyukan Tempozan'],
+          ['~16:45','<b>Tempozan Ferris Wheel</b> at dusk + a snack at the Marketplace','Tempozan Giant Ferris Wheel Osaka'],
+          ['~18:00','Back to Fukushima — settle in, then an easy first dinner nearby (see below)'],
+        ]},
       ]},
       {type:'eat', title:'Dinner near Fukushima-ku &amp; Umeda', items:[
         ['','<b>Fukushima izakaya alley</b> (Fukumaru Dori 57) — lively casual strip, ~3-min walk from JR Fukushima. A Hankyu Oasis supermarket has a 2nd-floor eat-in space with self-serve coffee. Great low-key first night.','Fukumaru Dori 57 Fukushima-ku Osaka'],
@@ -415,7 +431,8 @@ const DAYS = [
       ]},
       {type:'see', title:'Rainy / tired backup — all indoors', items:[
         ['','<b>Within 1–2 stops of the Airbnb:</b> Umeda depachika food halls · <b>MARUZEN &amp; Junkudo</b> bookshop (7 Chayamachi, 1F–7F, English on 6F, <b>open to 22:00</b>) · <b>Pokémon Center</b> (Daimaru Umeda 13F) · arcades (Round1, Taito) · Don Quijote (24h).'],
-        ['','<b>Bigger half-day option:</b> <b>Osaka Aquarium Kaiyukan</b> (whale shark!), ~10:00–20:00 — a strong kid pick if energy survives the flight.'],
+        ['','<b>Bigger half-day option:</b> <b>Osaka Aquarium Kaiyukan</b> (whale shark!) — now a full pick above (<i>Option C</i>); all-indoor, ~10:00–20:00.'],
+        ['','<b>Cup Noodles Museum, Ikeda</b> — <b>free entry</b>, open <b>9:30–16:30</b> (last in 15:30), ~25 min by Hankyu from Umeda. Design-your-own Cup Noodle (<b>¥500</b>, same-day numbered ticket) or the <b>Chicken Ramen Factory</b> workshop (¥1,000 adult / ¥600 child, <b>reserve by phone</b>). Hands-on and a hit at 11 &amp; 13 — great low-energy rainy pick.','Cup Noodles Museum Osaka Ikeda'],
       ]},
       {type:'tip', items:[
         ['','<b>eSIM is cheaper bought online before you fly</b> than at the KIX counters — sort at least 1–2 phones now. One pocket-wifi can also cover the whole group.'],
@@ -562,6 +579,7 @@ const DAYS = [
           'Store bags at Shin-Kobe / Sannomiya lockers first',
           ['<b>Kitano-cho (Ijinkan):</b> European-style historic mansions ~10–15 min uphill from Sannomiya — fun ~1 hr walk; district free to roam, individual houses ~¥550–880 (combo passes from ~¥1,540), 9:30–18:00','Kitano Ijinkan Kobe'],
           ['This is the moment for <b>Kobe beef</b> at the source — Steakland &amp; Propeller take bookings, the rest are walk-in &amp; can queue/sell out, so reserve or arrive at opening','Steakland Kobe Sannomiya'],
+          ['<b>Prefer local over touristy?</b> Skip the beef queues for an old Kobe <i>yoshoku</i> grill — see “<b>Where Kobe locals eat</b>” below. <b>Grill Suematsu</b> sits right on the Kitano descent; <b>Grill Ippei</b> is 2 min from Sannomiya','Grill Suematsu Kano-cho Kobe'],
           'Catch the ~2pm Shinki/Arima Express bus up to Arima, check in ~3pm',
         ], sched:[
           ['~11:30','Arrive Sannomiya · lockers for bags','Sannomiya Station Kobe'],
@@ -583,6 +601,14 @@ const DAYS = [
         ['','<b>Nagata Tank Suji</b> (Sun Plaza B1F) — Kobe soul-food soba-meshi + beef-tendon bokkake, ~¥800–1,000; 11:00–22:00, <b>closed Tue</b>. Casual &amp; cheap.','Nagata Tank Suji Sun Plaza Kobe'],
         ['','<b>Nankinmachi</b> Chinatown street food — Roushouki pork buns (¥100 ea), fried soup dumplings, beef croquettes, ~¥200–800. Lively, kid-friendly; lines 30–60 min at busy stalls.','Nankinmachi Chinatown Kobe'],
         ['','Cafe en route: <b>Freundlieb</b> (Kitano) — bakery-café in a 1929 former church, 10:00–19:00, <b>closed Wed</b> (open Fri). Good rain backup.','Freundlieb Kitano Kobe'],
+      ]},
+      {type:'eat', title:'Where Kobe locals eat — old <i>yoshoku</i> grills (the non-touristy pick)', items:[
+        ['','Kobe is the <b>birthplace of Japanese <i>yoshoku</i></b> (Western-Japanese home cooking), and locals skip the famous Kobe-beef queues for these family-run grills — house demi-glace, omurice, beef cutlet (<i>bifukatsu</i>), all ¥1,200–1,800. <b>All four below are open Friday Jun 5.</b>'],
+        ['','<b>Grill Ippei · Sannomiya</b> (グリル一平) — est. 1952, 4 generations; the omurice (pick S/M/L) &amp; beef-cutlet are the orders. <b>11:00–15:00</b> (LO 14:30), <b>closed Wed</b>. Just <b>2 min from JR Sannomiya</b> — the most convenient. Locals queue from ~11:30, so go right at open.','Grill Ippei Sannomiya Kobe'],
+        ['','<b>Grill Suematsu</b> (グリル末松) — uphill in Kano-cho, <b>on your way down from Kitano</b>. Signature <b>“Sakura Rice”</b> ~¥1,400 (chicken rice + tonkatsu + white sauce). Lunch <b>11:30–14:30</b> (LO 14:00), <b>no lunch reservations</b>, closed 1st/3rd Mon &amp; Tue (open Fri). Fits the Kitano walk perfectly.','Grill Suematsu Kano-cho Kobe'],
+        ['','<b>Grill Juujiya</b> (グリル十字屋) — est. <b>1933</b>, the most retro &amp; least touristy; a 5-day demi-glace over omurice/bifukatsu. Lunch <b>11:00–14:30</b> (LO), <b>closed Sun</b> (open Fri). ~7–8 min from JR Sannomiya toward Edomachi.','Grill Juujiya Edomachi Chuo-ku Kobe'],
+        ['','<b>Yoshoku no Asahi</b> (洋食の朝日) — est. 1961, Tabelog Top-100 <b>bifukatsu</b> of black-wagyu; cult-local. <b>Weekday lunch only 11:00–15:00</b>, closed Sat/Sun. <b>Caveat:</b> it’s near <b>Kobe Station / Nishi-Motomachi (not Sannomiya)</b> and the line starts ~<b>9:30</b> — only worth it if you go straight there first, otherwise the queue will blow your 2pm bus.','Yoshoku no Asahi Shimoyamate Kobe'],
+        ['','<b>To just wander &amp; pick:</b> the <b>Torwest</b> lanes around Kitanozaka (between Motomachi &amp; Sannomiya) are full of small local spots, and the <b>Center Plaza / Sun Plaza basements</b> by Sannomiya are an underground warren of cheap local eateries — both far more local than the Nankinmachi tourist stalls.','Tor West Kitanozaka Kobe'],
       ]},
       {type:'see', title:'Arima Onsen village', items:[
         ['','One of Japan\'s three oldest hot springs (~1,300 yrs). Two waters: <b>Kinsen</b> (gold — iron/salt, reddish-brown) &amp; <b>Ginsen</b> (silver — clear, carbonated)'],
@@ -950,6 +976,10 @@ const PLACES = [
   {area:'osaka', sub:'Dotonbori &amp; Namba', cat:'book', nm:'Animate Nipponbashi', pr:'', ty:'Anime / Manga', ds:'Largest anime/manga store in western Japan (Den Den Town). Teen favourite.'},
   {area:'osaka', sub:'Dotonbori &amp; Namba', cat:'book', nm:'Standard Bookstore', pr:'', ty:'Bookshop', ds:'Curated indie vibe, design/art, cafe feel (Shinsaibashi &amp; Abeno).'},
   // KOBE / ARIMA
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Grill Ippei (Sannomiya)', pr:'¥1,200–1,800', ty:'Yoshoku', ds:'Local pick over the beef queues. Est. 1952 — omurice (S/M/L) &amp; beef cutlet. 11:00–15:00, closed Wed. 2 min from JR Sannomiya.', hrs:'11:00–15:00, closed Wed'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Grill Suematsu', pr:'~¥1,400', ty:'Yoshoku', ds:'“Sakura Rice” — chicken rice + tonkatsu + white sauce. Uphill in Kano-cho, on the Kitano descent. No lunch reservations.', hrs:'11:30–14:30, closed 1st/3rd Mon &amp; Tue'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Grill Juujiya', pr:'¥1,200–1,800', ty:'Yoshoku', ds:'Est. 1933 — the most retro &amp; least touristy; 5-day demi-glace over omurice/bifukatsu. ~7–8 min from Sannomiya (Edomachi).', hrs:'11:00–14:30, closed Sun'},
+  {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Yoshoku no Asahi', pr:'¥1,200–1,800', ty:'Yoshoku', ds:'Tabelog Top-100 black-wagyu bifukatsu, cult-local. Weekday lunch only; line from ~9:30. Near Kobe Stn/Nishi-Motomachi, not Sannomiya.', hrs:'11:00–15:00 wkdays, closed Sat/Sun'},
   {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Steakland Kobe', pr:'~¥3,500', ty:'Kobe beef teppanyaki', ds:'150g Kobe beef set cooked at your counter — expect a line; takes bookings.'},
   {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Kobe Steak Propeller', pr:'~¥3,500', ty:'Kobe beef', ds:'Casual &amp; cozy, 5-min from Sannomiya. Kobe Steak S lunch + set.'},
   {area:'kobe', sub:'Kobe — Sannomiya', cat:'eat', nm:'Hiroshige', pr:'~¥1,500', ty:'Kobe beef gyudon', ds:'Cheapest way to taste Kobe beef — tiny (~10 seats), often a wait.'},
